@@ -95,17 +95,20 @@ class TestResultController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($patient_id)
+    public function edit($patient_id, $test_carriedout)
     {
-        // Retrieve test result for the given patient_id
-        $testResult = Test_Result::where('patient_id', $patient_id)->first();
+        // Retrieve test result for the given patient_id and test_carriedout
+        $testResult = Test_Result::where('patient_id', $patient_id)
+            ->where('test_carriedout', $test_carriedout)
+            ->first();
     
         if ($testResult) {
-            return view('editpatient', compact('testResult'));
+            return view('editpatient', ['patients' => $testResult]);
         } else {
             return redirect()->route('results')->with('error', 'Test result not found');
         }
     }
+    
     
     public function update(Request $request)
     {

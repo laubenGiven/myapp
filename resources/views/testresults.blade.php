@@ -68,14 +68,13 @@
 @endif
 
            <td>
-           <button 
-                type="button" class="btn btn-primary" href="{{ route('patient.edit')}}"><i class="fa-solid fa-pencil fa-lg"></i> Edit
-            </button>
-          
-            <button 
-                type="button" class="btn btn-Danger" href="{{ route('patient.delete')}}"><i class="fa-solid fa-trash fa-lg"></i> delete
-            </button>
-        </td>
+           <a href="{{ route('patient.edit', ['patient_id' => $patient->id,'test_carriedout' => $patient->test_carriedout ]) }}" class="btn btn-primary">
+    <i class="fa-solid fa-pencil fa-lg"></i> Edit
+</a>
+<a href="{{ route('patient.delete', ['patient_id' => $patient->id, 'test_carriedout' => $patient->test_carriedout]) }}" class="btn btn-danger">
+        <i class="fa-solid fa-trash fa-lg"></i> Delete
+    </a>
+</td>
           </tr>
           @endforeach
         </tbody>
