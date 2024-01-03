@@ -50,7 +50,8 @@ class PatientController extends Controller
              'contact' => $validatedData['contact'],
              'sex' => $validatedData['sex'],
              'age' => $validatedData['age'],
-             'test_date' => $validatedData['test_date'],
+             'agecount' => $validatedData['agecount'],
+            //  'test_date' => $validatedData['test_date'],
          ]);
      
          // Save the patient to the database
@@ -61,7 +62,7 @@ class PatientController extends Controller
              $patient->test_result()->create([
                  'name'=>$validatedData['name'],
                  'test_carriedout' => $test,
-                 'result_date' => $validatedData['test_date'],
+                //  'result_date' => $validatedData['test_date'],
 
                  
              ]);

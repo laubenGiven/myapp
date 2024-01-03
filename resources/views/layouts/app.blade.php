@@ -57,39 +57,6 @@
         document.getElementById('successMessage').style.display = 'none';
     }, 5000); // 5000 milliseconds = 5 seconds
    </script>
-   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const saveResultBtns = document.querySelectorAll('.save-result-btn');
-        saveResultBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const patientId = this.getAttribute('data-patient-id');
-                const testCarriedOut = this.getAttribute('data-test-carriedout');
-                const input = document.querySelector(`input[data-patient-id="${patientId}"][data-test-carriedout="${testCarriedOut}"]`);
-                const testResult = input.value;
-
-                fetch('/save-test-result', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({
-                        patient_id: patientId,
-                        test_carriedout: testCarriedOut,
-                        test_result: testResult
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    // Handle success or error response here
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            });
-        });
-    });
-</script>
+  
     </body>
 </html>

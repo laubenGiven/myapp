@@ -1,5 +1,14 @@
-<div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-    <x class="block h-12 w-auto" />
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Send  via Email and Print Patient Results') }}
+        </h2>
+    </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+        <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
+    <x class="block h-auto w-auto" />
 
    
     <table class="table table-hover">
@@ -9,21 +18,23 @@
             <th scope="col">patient Name</th>
             <th scope="col">Test Carriedout</th>
             <th scope="col">Test Results</th>
+            <th scope="col">Test Date</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
         @foreach($patients as $patient)
           <tr class="table-default">
-            <td>{{$patient->patient_id }}</td>
+            <td>{{$patient->patient_id}}</td>
             <td>{{$patient->name}}</td>
-            <td>{{$patient->test_required}}</td>
+            <td>{{$patient->test_carriedout}}</td>
             <td>{{$patient->test_result}}</td>
+            <td>{{$patient->test_date}}</td>
 
-            <td> <input type="text" placeholder="enter test result here" id="patientName" name="name" class="mt-1 block  border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></td>
+            
             <td>
             <button 
-                type="button" class="btn " href="route{ }"><i class="fa-solid fa-envelope-cirle-check"></i> send via email
+                type="button" class="btn " href="route{ }"><i class="fa-solid fa-envelope-circle-check"></i> send via email
             </button>
             <button 
                 type="button" class="btn " href="route{ }"><i class="fa-solid fa-print fa-lg"></i> Print
@@ -40,3 +51,7 @@
     <div>
         
 </div>
+            </div>
+        
+    </div>
+</x-app-layout>

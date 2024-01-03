@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->integer('contact');
             $table->string('sex');
-            $table->string('age')->nullable();                            
+            $table->integer('age')->nullable();
+            $table->string('agecount')->nullable();
             $table->date('test_date')->default(now()->format('Y-m-d')); 
             $table->timestamps();           
             

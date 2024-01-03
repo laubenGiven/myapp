@@ -15,5 +15,5 @@ class Patient extends Model
         return $this->hasMany(Test_Result::class);
     }
 
-protected $fillable = ['name','email','contact','sex','age','test_date'];
+protected $fillable = ['name','email','contact','sex','age','agecount','test_date'];
 }

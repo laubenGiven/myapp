@@ -17,12 +17,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-10 sm:-my-px sm:ms-10 sm:flex px-4 mx-4">
-                    <x-nav-link href="{{ route('sendresults') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('results') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Test Results') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-10 sm:-my-px sm:ms-10 sm:flex px-4 mx-4">
-                    <x-nav-link href="{{ route('results') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('sendresults') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Print & Send Patient Results') }}
                     </x-nav-link>
                 </div>

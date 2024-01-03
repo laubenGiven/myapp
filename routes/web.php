@@ -44,18 +44,23 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    // Route for storing patient data
-    Route::post('/dashboard/store', [PatientController::class, 'store'])->name('dashboard.store');
+        return view('dashboard')->name('dashboard');
+    });
     
-    Route::get('/results', [TestResultController::class,'index'])->name('results');
-
-    Route::get('/results', [TestResultController::class,'show'])->name('sendresults');
+    Route::post('/patient/store', [PatientController::class, 'store'])->name('dashboard.store');
+    
+    Route::get('/results', [TestResultController::class, 'index'])->name('results');
+    
+    Route::get('/sendresults', [TestResultController::class, 'show'])->name('sendresults');
+    
+    Route::get('/patient/{patient_id}/edit', [TestResultController::class, 'edit'])->name('patient.edit');
+    Route::post('/patient/{patient_id}/update', [TestResultController::class, 'update'])->name('patient.update');
+    
+    Route::get('/patient/{patient_id}/delete', [TestResultController::class, 'destroy'])->name('patient.delete');
+    
     Route::post('/save-test-result', [TestResultController::class, 'saveTestResult'])->name('save-test-result');
-
-    Route::get('/charges', function () {
-        return view('testcharges');
-    })->name('charges');
-
+    
+    Route::get('/chargesTemplate', function () {
+        return view('testcharges')->name('charges');
+    });
 });

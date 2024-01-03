@@ -30,10 +30,15 @@
               <option>Female</option>             
             </select>
           </div>
-          <div class="mb-4">
-            <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
-            <input type="number" id="age" name="age" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-          </div>
+          <div class="mb-4" style="display:flex;">
+    <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+    <input type="number" id="age" name="age" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">            
+    <select id="agecount" name="agecount" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        <option value="months">months</option>
+        <option value="years">years</option>             
+    </select>
+</div>
+
           
           <div class="mb-4 row">
   <label class="col-12 text-sm font-medium text-gray-700">Test Required</label>
@@ -363,15 +368,14 @@
     </div>
   </div>
 
-        </div>
 
-
-          
-          <div class="mb-4">
-            <label for="test_date" class="block text-sm font-medium text-gray-700">Test Date</label>
-            <input type="date" id="test_date" name="test_date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+       <div class="mb-4">
+            <label for=" Other Test" class="block text-sm font-medium text-gray-700"> Other Test</label>
+            <input type="text" id="other test" name="testRequired[]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
           </div>
-          <div class="mt-6">
+
+</div>
+        <div class="mt-6">
             <button type="submit" class="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">Submit</button>
           </div>
           </form>

@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('test_carriedout');
             $table->string('test_result')->nullable();
-            $table->date('result_date');
+            $table->string('comment')->nullable();
+            $table->string('preview')->nullable();
+            $table->date('result_date')->default(now()->format('Y-m-d'));
             $table->timestamps();
         });
     }
