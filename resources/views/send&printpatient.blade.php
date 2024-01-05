@@ -29,15 +29,15 @@
             <td>{{$patient->name}}</td>
             <td>{{$patient->test_carriedout}}</td>
             <td>{{$patient->test_result}}</td>
-            <td>{{$patient->test_date}}</td>
+            <td>{{$patient->result_date}}</td>
 
             
             <td>
             <button 
-                type="button" class="btn " href="route{ }"><i class="fa-solid fa-envelope-circle-check"></i> send via email
+                type="button" class="btn " href="{{ route('')}}"><i class="fa-solid fa-envelope-circle-check"></i> send via email
             </button>
             <button 
-                type="button" class="btn " href="route{ }"><i class="fa-solid fa-print fa-lg"></i> Print
+                type="button" class="btn " href="{{ route('')}}"><i class="fa-solid fa-print fa-lg"></i> Print
             </button>
         </td>
           </tr>
@@ -51,7 +51,7 @@
     <div>
         
 </div>
-            </div>
+  </div>
         
     </div>
 </x-app-layout>

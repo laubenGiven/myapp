@@ -21,35 +21,33 @@ class TestResultController extends Controller
         return view('testresults', ['patients'=>$patients]);
     }
 
-    public function saveTestResult(Request $request)
-    {
-        $validatedData = $request->validate([
-            'patient_id' => 'required|exists:patients,id',
-            'test_result' => 'required',
-            'test_carriedout' => 'required',
-            'var' => 'nullable',
-            'comment' => 'nullable', // Assuming 'comment' field is optional
-        ]);
-    
-        // Prepare the input data
-        $data = [
-            'patient_id' => $validatedData['patient_id'],
-            'test_carriedout' => $validatedData['test_carriedout'],
-        ];
-    
-        // Find or create the test result record
-        $testResult = Test_Result::updateOrCreate(
-            $data,
-            [
-                'test_result' => $validatedData['test_result'],
-                'var' => $validatedData['var'] ?? null,
-                'comment' => $validatedData['comment'] ?? null,
-            ]
-        );
-    
-        return redirect()->route('results')->with('success', 'Test result inserted successfully!');
-    }
-    
+    public function saveTestResult(Request $request, $patient_id)
+{
+    $validatedData = $request->validate([
+        'test_result' => 'required',        
+        'var' => 'nullable',
+        'comment' => 'nullable',
+    ]);
+
+    $testResultData = [
+
+        'test_result' => $validatedData['test_result'],
+        'var' => $validatedData['var'] ?? null,
+        'comment' => $validatedData['comment'] ?? null,
+    ];
+
+    // Find or create the test result record
+    Test_Result::updateOrCreate(
+        [
+            'id' => $patient_id,
+            
+        ],
+        $testResultData
+    );
+
+    return redirect()->route('results')->with('success', 'Test result inserted/updated successfully!');
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -95,57 +93,58 @@ class TestResultController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($patient_id, $test_carriedout)
+    public function edit($patient_id)
     {
         // Retrieve test result for the given patient_id and test_carriedout
-        $testResult = Test_Result::where('patient_id', $patient_id)
-            ->where('test_carriedout', $test_carriedout)
+        $testResult = Test_Result::where('id', $patient_id)
+           
             ->first();
     
         if ($testResult) {
-            return view('editpatient', ['patients' => $testResult]);
+            return view('editpatient', ['patient' => $testResult]); // Change 'patients' to 'testResult'
         } else {
             return redirect()->route('results')->with('error', 'Test result not found');
         }
     }
     
     
-    public function update(Request $request)
+    
+    public function update(Request $request, $patient_id)
     {
         $validatedData = $request->validate([
             'patient_id' => 'required',
-            'test_result' => 'required',
-            'test_carriedout' => 'required',
             'name' => 'required',
-            'comment' => 'required',
-            'contact' => 'required',
+            'test_carriedout' => 'required',
+            'test_result' => 'required',
+            'comment' => 'nullable',
+            'preview' => 'nullable',
         ]);
     
-        $testResult = Test_Result::where('patient_id', $validatedData['patient_id'])
-            ->where('test_carriedout', $validatedData['test_carriedout'])
+        $testResult = Test_Result::where('id', $patient_id)         
             ->first();
     
         if ($testResult) {
-            $testResult->test_result = $validatedData['test_result'];
-            $testResult->save();
+            $testResult->fill($validatedData)->save();
     
             return redirect()->route('results')->with('success', 'Test result updated successfully!');
-        } else {
-            return redirect()->route('results')->with('error', 'Test result not found');
         }
+    
+        return redirect()->route('results')->with('error', 'Test result not found');
     }
+    
     
     public function destroy($patient_id)
     {
-        $testResult = Test_Result::where('patient_id', $patient_id)->first();
+        $testResult = Test_Result::where('id', $patient_id)           
+            ->first();
     
         if ($testResult) {
             $testResult->delete();
     
             return redirect()->route('results')->with('success', 'Test result deleted successfully!');
-        } else {
-            return redirect()->route('results')->with('error', 'Test result not found');
         }
+    
+        return redirect()->route('results')->with('error', 'Test result not found');
     }
     
 }

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Test_Result extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','test_carriedout','result_date'];
+    protected $fillable = ['name','test_carriedout','test_result','comment','preview','result_date'];
 }

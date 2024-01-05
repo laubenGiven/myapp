@@ -13,7 +13,7 @@
           </div>
 
           <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-700">Email Address / Contact</label>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address </label>
             <input type="text" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500  @error('email') is-invalid @else is-valid @enderror">
           </div>
 

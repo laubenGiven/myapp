@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\TestResultController;
+use App\Http\Controllers\PdfController;
 use Illuminate\Http\Request;
 
 /*
@@ -54,13 +55,19 @@ Route::middleware([
     Route::get('/sendresults', [TestResultController::class,'show'])->name('sendresults');
 
     Route::get('/patient/{patient_id}/edit', [TestResultController::class,'edit'])->name('patient.edit');
-    Route::get('/patient/{patient_id}/update', [TestResultController::class,'update'])->name('patient.update');
+    Route::post('/patient/{patient_id}/update', [TestResultController::class,'update'])->name('patient.update');
 
-    Route::get('/patient/{patient_id}/delete', [TestResultController::class,'destroy'])->name('patient.delete');
+    Route::delete('/testresult/{patient_id}/delete', [TestResultController::class, 'destroy'])->name('patient.delete');
 
-    Route::post('/save-test-result', [TestResultController::class, 'saveTestResult'])->name('save-test-result');
+
+    Route::post('/save-test-result{patient_id}/save', [TestResultController::class, 'saveTestResult'])->name('save-test-result');
 
     Route::get('/chargesTemplate', function () {
         return view('testcharges');
-    })->name('charges');
+    })->name('charges');  
+
+Route::get('/generate-pdf', [PdfController::class, 'generatePdf'])->name('generate.pdf');
+Route::get('/generate-pdf/{patient_id}', [PdfController::class, 'generateAndPrintPdf']);
+
+
 });
