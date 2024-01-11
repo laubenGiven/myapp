@@ -1,0 +1,44 @@
+services:
+  # Laravel web service using Docker
+  - type: web
+    name: myapp
+    runtime: docker
+    region: singapore
+    plan: Free
+    branch: master
+    rootDir: myapp
+    numInstances: 1 # Adjusted to 1 to fit within the Free plan's limits
+    healthCheckPath: /
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        sync: false # Placeholder for a value to be added in the dashboard
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: friecca-myapp
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: friecca-myapp
+          property: port
+      - key: DB_DATABASE
+        value: myapp_3nqr
+      - key: DB_USERNAME
+        value: alien
+      - key: DB_PASSWORD
+        sync: false # Placeholder for a value to be added in the dashboard
+
+databases:
+  - name: friecca-myapp
+    plan: Free
+    databaseName: myapp_3nqr
+    user: alien
+
+# The rest of your services and databases have been removed for brevity.
