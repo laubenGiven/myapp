@@ -6,6 +6,8 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\TestResultController;
 use App\Http\Controllers\PdfController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\EmailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +41,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+Route::middleware(['auth', 'checkrole:clinician'])->group(function () {
+     // Routes accessible only to clinicians
+     Route::post('/login-clinician/post', [PatientController::class,'loginClinician'])->name('loginClinician');
+     Route::get('/clinicianlogin',[TestResultController::class,'clinicianshow'])->name('clinician');
+     Route::get('/clinicianDashBoard',[TestResultController::class,'clinicianDashBoard'])->name('cliniciandash');
+     Route::get('/search/', [PatientController::class, 'search'])->name('search');
+
+   
+});
+
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+    'checkrole:technician',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -66,8 +84,8 @@ Route::middleware([
         return view('testcharges');
     })->name('charges');  
 
-Route::get('/generate-pdf', [PdfController::class, 'generatePdf'])->name('generate.pdf');
-Route::get('/generate-pdf/{patient_id}', [PdfController::class, 'generateAndPrintPdf']);
+Route::get('sendresults/via-emailpdf/{patient_id}', [EmailController::class, 'sendPdfEmail'])->name('sendemail.pdf');
 
+Route::get('sendresults/generateprint-pdf/{patient_id}', [PdfController::class, 'generateAndDisplayPdf'])->name('generateprint.pdf');
 
 });

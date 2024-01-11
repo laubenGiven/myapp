@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+        <img src="{{ Vite::asset('resources/images/logo.jpeg') }}" class="img-fluid rounded-circle" alt="Logo" style="width: 150px; height: 150px; border-radius: 50%;">
+
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -13,6 +14,14 @@
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
+            <div>
+            <x-label for="role" value="{{ __('Role') }}" />
+             <select name="role" id="role" class="block mt-1 w-full">
+                  <option value="technician">Technician</option>
+                  <option value="user">User</option>
+                  <option value="clinician">Clinician</option>
+             </select>
+             </div>
 
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />

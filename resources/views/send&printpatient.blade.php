@@ -6,6 +6,12 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        @if (session('success'))
+         <div id="successAlert" class="alert alert-success">
+          {{ session('success') }}
+           </div>
+        @endif
+
 
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
     <x class="block h-auto w-auto" />
@@ -31,15 +37,18 @@
             <td>{{$patient->test_result}}</td>
             <td>{{$patient->result_date}}</td>
 
-            
             <td>
-            <button 
-                type="button" class="btn " href="{{ route('')}}"><i class="fa-solid fa-envelope-circle-check"></i> send via email
-            </button>
-            <button 
-                type="button" class="btn " href="{{ route('')}}"><i class="fa-solid fa-print fa-lg"></i> Print
-            </button>
-        </td>
+            <a href="{{ route('sendemail.pdf', ['patient_id' => $patient->patient_id]) }}" class="btn btn-primary">
+                   <i class="fa-solid fa-envelope-circle-check"></i> Send PDF via Email
+                </a>
+             </td>
+            <td>             
+                
+                 <a href="{{ route('generateprint.pdf', ['patient_id' => $patient->patient_id]) }}" class="btn btn-success">
+                      <i class="fa-solid fa-print fa-lg"></i> Download To Print
+                  </a>
+             </td>
+
           </tr>
           @endforeach
         </tbody>

@@ -5,55 +5,43 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Patient;
-use App\Models\Test_Result;
+use Illuminate\Support\Facades\Storage;  // Import Storage for file access
 
 class SendPdfEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public array $content;
+    public string $pdfContent;
+    public string $pdfFileName;
+
     /**
      * Create a new message instance.
-     */
-    public function __construct(
-        public Patient $patient,
-        public Test_Result $test_result,
-    )
-    {
-        //
-    }
-
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            from:'frieccapharmacyltd@gmail.com',
-            subject: 'Friecca pharmacy Patient Result Form',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'pdf',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @param array $content Email content and data
+     * @param string $pdfContent PDF content as a string
+     * @param string $pdfFileName Desired filename for the PDF attachment
      */
-    public function attachments(): array
+    public function __construct(array $content, string $pdfContent, string $pdfFileName)
     {
-        return [];
+        $this->content = $content;
+        $this->pdfContent = $pdfContent;
+        $this->pdfFileName = $pdfFileName;
     }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->subject($this->content['subject'])
+                    ->view('email', ['patient' => $this->content['patient'], 'testResults' => $this->content['testResults']])
+                    ->attachData($this->pdfContent, $this->pdfFileName, [
+                        'mime' => 'application/pdf',
+                    ]);
+    }
+
 }

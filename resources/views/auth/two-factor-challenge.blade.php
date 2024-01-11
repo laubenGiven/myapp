@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+        <img src="{{ Vite::asset('resources/images/logo.jpeg') }}" class="img-fluid rounded-circle" alt="Logo" style="width: 150px; height: 150px; border-radius: 50%;">
+
         </x-slot>
 
         <div x-data="{ recovery: false }">

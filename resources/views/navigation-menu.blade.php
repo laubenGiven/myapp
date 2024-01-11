@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center ">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+                    <img src="{{ Vite::asset('resources/images/logo.jpeg') }}" class="img-fluid rounded-circle" alt="Logo" style="width: 65px; height: 65px; border-radius: 50%;">
+
                     </a>
                 </div>
 

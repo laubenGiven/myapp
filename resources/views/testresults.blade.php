@@ -7,11 +7,12 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        @if (session('success'))
+         <div id="successAlert" class="alert alert-success">
+          {{ session('success') }}
+           </div>
+        @endif
 
             <div class="bg-white border-b border-gray-200 p-6 lg:p-8">
                 <table class="table table-hover">
@@ -35,9 +36,8 @@
                                
                                     <td  class="w-500 px-1 py-1">
                                     <form method="POST" action="{{ route('save-test-result',['patient_id' => $patient->id]) }}">
-                                      @csrf
-                                    
-                                       @method('DELETE')
+                                      @csrf                                    
+                                       
                                         <input type="hidden" name="patient_id" value="{{ $patient->patient_id }}">
                                         <input type="hidden" name="test_carriedout" value="{{ $patient->test_carriedout }}">
                                      <div class="flex gap-4 items-center w-500 px-1 py-1">

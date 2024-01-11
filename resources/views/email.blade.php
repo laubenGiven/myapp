@@ -59,7 +59,7 @@
     </style>
 </head>
 <body class="p-8 relative">
-    <h3 class="text-3xl font-bold mb-4">{{ $title }}</h3>
+    <h3 class="text-3xl font-bold mb-4"> Test Result Report</h3>
 
     <div class="lab-address">
     <p style="font-weight: semi-bold; font-size: 18px;">Friecca Clinical Laboratory,</p>

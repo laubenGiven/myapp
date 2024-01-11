@@ -123,12 +123,7 @@
       <input type="checkbox" id="Progesterone" name="testRequired[]" value="Progesterone" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
       <label for="Progesterone" class="ml-2 text-gray-700">Progesterone</label>
     </div>
-  </div>
-
-
-
-
-          
+  </div>          
           <!-- Testosterone Checkbox -->
   <div class="col-3 mb-2">
     <div class="flex items-center ml-3 mr-4 mb-2">

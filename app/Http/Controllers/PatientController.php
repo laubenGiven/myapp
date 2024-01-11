@@ -8,6 +8,9 @@ use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Test_Result;
+use App\Models\User;
 
 
 class PatientController extends Controller
@@ -24,6 +27,42 @@ class PatientController extends Controller
     public function index()
     {
         //
+    }
+
+    public function search(Request $request)
+    { 
+      $searchQuery = $request->input('search');
+ 
+       
+      // Perform search on patients and eager load related test_results
+      $patients = Test_Result::where('name', 'like', '%' . $searchQuery . '%')
+      ->orWhere('patient_id', 'like', '%' . $searchQuery . '%')      
+      ->get();
+
+        return view('cliniciansearch',['patients'=>$patients]);
+    }
+
+    public function loginClinician(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Get the user with the role 'clinician' from the database
+        $clinician = User::where('email', $request->input('email'))
+            ->where('role', 'clinician')
+            ->first();
+
+        // Check if the user was found and validate the password
+        if ($clinician && Auth::attempt($request->only('email', 'password'))) {
+            // Authentication passed, redirect to clinician view
+            return redirect()->route('cliniciandash');
+        }
+
+        // If authentication fails, redirect back with an error message
+        return back()->withInput()->withErrors(['email' => 'Invalid credentials']);
     }
 
     /**
