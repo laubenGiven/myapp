@@ -7,37 +7,37 @@
       <div class="relative px-2 py-2">
       <form class="space-y-4" method="POST" action="{{ route('dashboard.store') }}">
        @csrf <!-- Adding CSRF token -->
-          <div class="mb-4">
-            <label for="name" class="block text-sm font-medium text-gray-700">Patient Name</label>
-            <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
-          </div>
+       <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700">Patient Name</label>
+        <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required value="{{ old('name') }}">
+    </div>
 
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-700">Email Address </label>
-            <input type="text" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500  @error('email') is-invalid @else is-valid @enderror">
-          </div>
+    <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address </label>
+        <input type="text" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500  @error('email') is-invalid @else is-valid @enderror" value="{{ old('email') }}">
+    </div>
 
-          <div class="mb-4">
-            <label for="contact" class="block text-sm font-medium text-gray-700"> Contact</label>
-            <input type="number" id="contact" name="contact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-          </div>
+    <div class="mb-4">
+        <label for="contact" class="block text-sm font-medium text-gray-700"> Contact</label>
+        <input type="number" id="contact" name="contact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('contact') }}">
+    </div>
 
+    <div class="mb-4">
+        <label for="sex" class="block text-sm font-medium text-gray-700">Sex</label>
+        <select id="sex" name="sex" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            <option {{ old('sex') == 'Male' ? 'selected' : '' }}>Male</option>
+            <option {{ old('sex') == 'Female' ? 'selected' : '' }}>Female</option>
+        </select>
+    </div>
 
-          <div class="mb-4">
-            <label for="sex" class="block text-sm font-medium text-gray-700">Sex</label>
-            <select id="sex" name="sex" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-              <option>Male</option>
-              <option>Female</option>             
-            </select>
-          </div>
-          <div class="mb-4" style="display:flex;">
-    <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
-    <input type="number" id="age" name="age" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">            
-    <select id="agecount" name="agecount" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-        <option value="months">months</option>
-        <option value="years">years</option>             
-    </select>
-</div>
+    <div class="mb-4" style="display:flex;">
+        <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+        <input type="number" id="age" name="age" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('age') }}">
+        <select id="agecount" name="agecount" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            <option value="months" {{ old('agecount') == 'months' ? 'selected' : '' }}>months</option>
+            <option value="years" {{ old('agecount') == 'years' ? 'selected' : '' }}>years</option>
+        </select>
+    </div>
 
           
           <div class="mb-4 row">
