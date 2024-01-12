@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('test_carriedout');
+            $table->string('test_carriedout')->nullable();
             $table->string('test_result')->nullable();
             $table->string('comment')->nullable();
             $table->string('preview')->nullable();

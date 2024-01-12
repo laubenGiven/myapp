@@ -30,7 +30,7 @@ class EmailController extends Controller
         $pdfContent = $pdf->output();
     
         // Send email with PDF attachment
-        Mail::to('mpairwelauben375@gmail.com')->send(new SendPdfEmail($data, $pdfContent, $patient->name . '_' . $patient->id . '_testResults.pdf'));
+        Mail::to($patient->email)->send(new SendPdfEmail($data, $pdfContent, $patient->name . '_' . $patient->id . '_testResults.pdf'));
     
         return redirect()->back()->with('success', 'Email with PDF sent successfully!');
     }

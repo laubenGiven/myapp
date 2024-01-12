@@ -5,7 +5,7 @@
 <head>
     <title>Test Result Report</title>
 
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         /* Styles for form input fields */
         input[type="text"],
@@ -24,7 +24,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 378px;
-    height: 200px;
+    height: 195px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,20 +59,10 @@
     </style>
 </head>
 <body class="p-8 relative">
-    <h3 class="text-3xl font-bold mb-4">{{ $title }}</h3>
-
-    <div class="lab-address">
-    <p style="font-weight: semi-bold; font-size: 18px;">Friecca Clinical Laboratory,</p>
-
-        <p>Wandegeya plot 160 Haji Musa Kasule Rd, </p>
-        
-        <p>0778-826812/0756308580,</p>
-        <p>0772-590940/0701-590940,</p>
-        <p>friecapharmacyltd@gmail.com</p>
-</div>
+   
 
     <div class="logo">   
-    <img src="{{ public_path('logo.jpeg') }}" alt="Logo" class="img-fluid rounded-circle" alt="Logo" style="width: 100px; height: 100px; border-radius: 50%;">
+    <img src="{{ public_path('head.png') }}" alt="Logo" alt="Logo" style="width:100%; height: auto; ">
       
     </div>
     
@@ -80,52 +70,77 @@
     <br>
    
     <div class="mb-8">
-        <h2 class="text-xl font-semibold mb-2">Patient Information</h2>
-        <form class="space-y-4">
-            <div>
-                <label for="patient_id" class="block font-semibold">Patient Id:</label>
-                <input id="patient_id" type="text" value="{{ $patient->id }}" disabled>
-            </div>
-            <div>
-                <label for="name" class="block font-semibold">Name:</label>
-                <input id="name" type="text" value="{{ $patient->name }}" disabled>
-            </div>
-            <div>
-                <label for="age" class="block font-semibold">Age:</label>
-                <input id="age" type="text" value="{{ $patient->age }} {{ $patient->agecount }}" disabled>
-            </div>
-        </form>
-    </div>
+    <h2 class="text-xl font-semibold mb-2">Patient Information</h2>
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="patient_id" class="form-label font-semibold">Patient Id:</label>
+            <input id="patient_id" type="text" class="form-control" value="{{ $patient->id }}" disabled>
+        </div>
+        <div class="col-md-6">
+            <label for="name" class="form-label font-semibold">Name:</label>
+            <input id="name" type="text" class="form-control" value="{{ $patient->name }}" disabled>
+        </div>
+        <div class="col-md-6">
+            <label for="sex" class="form-label font-semibold">Sex:</label>
+            <input id="sex" type="text" class="form-control" value="{{ $patient->sex }}" disabled>
+        </div>
 
-    <div>
+
+        <div class="col-md-6">
+            <label for="age" class="form-label font-semibold">Age:</label>
+            <input id="age" type="text" class="form-control" value="{{ $patient->age }} {{ $patient->agecount }}" disabled>
+        </div>
+
+        <div class="col-md-6">
+            <label for="phone" class="form-label font-semibold">Contact:</label>
+            <input id="phone" type="text" class="form-control" value="{{ $patient->contact }}" disabled>
+        </div>
+        <div class="col-md-6">
+            <label for="date" class="form-label font-semibold">Test Date:</label>
+            <input id="date" type="text" class="form-control" value="{{ $patient->test_date }}" disabled>
+        </div>
+        
+
+    </form>
+</div>
+
+
+    <div class="container mt-4">
     <h2 class="text-xl font-semibold mb-2">Test Results</h2>
     @if($testResults && !$testResults->isEmpty())
-        @foreach($testResults->whereNotNull('test_result') as $testResult)
-            <form class="space-y-4">
-                <div>
-                    <label for="test_carriedout" class="block font-semibold">Test Carried Out:</label>
-                    <input id="test_carriedout" type="text" value="{{ $testResult->test_carriedout }}" disabled>
-                </div>
-                <div>
-                    <label for="test_result" class="block font-semibold">Test Result:</label>
-                    <input id="test_result" type="text" value="{{ $testResult->test_result }}" disabled>
-                </div>
-                <div>
-                    <label for="comment" class="block font-semibold">Comment:</label>
-                    <textarea id="comment" disabled>{{ $testResult->comment }}</textarea>
-                </div>
-            </form>
-        @endforeach
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="px-4 py-2">Test Carried Out</th>
+                        <th scope="col" class="px-4 py-2">Test Result</th>
+                        <th scope="col" class="px-4 py-2">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($testResults->whereNotNull('test_result') as $testResult)
+                        <tr>
+                            <td class="px-4 py-2">{{ $testResult->test_carriedout }}</td>
+                            <td class="px-4 py-2">{{ $testResult->test_result }}</td>
+                            <td class="px-4 py-2">{{ $testResult->comment }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     @else
-        <p>No test results found.</p>
+        <p class="alert alert-info">No test results found.</p>
     @endif
 </div>
+
+
    <br>
    <div class="stamp">
     <p class="date">{{ now()->format('Y-m-d') }}</p>
 </div>
 
 
-  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        
 </body>
 </html>
