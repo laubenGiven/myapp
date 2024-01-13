@@ -14,7 +14,7 @@
     }
 
     th, td {
-        padding: 10px;
+        padding: 5px;
         border: none;
         text-align: left;
         width:40px;
@@ -75,22 +75,43 @@
     <br>
     <br>
    
-    <div class="container-fluid mb-5">
-    <h2 class="fw-bold mb-4">Patient Information</h2>
+    <div class="container-fluid mb-2">
+    <h2 class="fw-bold mb-1">Patient Information</h2>
 
     <div class="row">
         <div class="col-4">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" class="thead-text  px-6 py-2">Patient Id</th>
-                        <th scope="col" class="thead-text px-6 py-2">Name</th>
+                        <th scope="col" class="thead-text  ">Patient Id</th>
+                        <th scope="col" class="thead-text ">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td class="td-text">
+            <input id="patient_id" type="text" class="form-control disabled-input" value="{{ $patient->id }}" disabled style="border-radius: 10px; width:200px; padding:0.5rem; font-size:16px;">
+        </td>
+        <td class="td-text">
+            <input id="name" type="text" class="form-control disabled-input" value="{{ $patient->name }}" disabled style="border-radius: 10px; width:300px; padding:0.5rem; font-size:16px;">
+        </td>
+    </tr>
+</tbody>
+
+            </table>
+        </div>
+        <div class="col-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="thead-text ">Sex</th>
+                        <th scope="col" class="thead-text ">Age</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-text"><input id="patient_id" type="text" class="form-control disabled-input" value="{{ $patient->id }}" disabled style="border-radius: 10px; width:200px"></td>
-                        <td class="td-text"><input id="name" type="text" class="form-control disabled-input " value="{{ $patient->name }}" disabled style="border-radius: 10px; width:300px"></td>
+                        <td class="td-text"><input id="sex" type="text" class="form-control disabled-input" value="{{ $patient->sex }}" disabled style="border-radius: 10px; width:200px;padding:0.5rem;font-size:16px;"></td>
+                        <td class="td-text"><input id="age" type="text" class="form-control disabled-input" value="{{ $patient->age }} {{ $patient->agecount }}" disabled style="border-radius: 10px; width:300px;padding:0.5rem;font-size:16px;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -99,30 +120,14 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" class="thead-text px-4 py-2">Sex</th>
-                        <th scope="col" class="thead-text px-4 py-2">Age</th>
+                        <th scope="col" class="thead-text  ">Contact</th>
+                        <th scope="col" class="thead-text ">Test Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-text"><input id="sex" type="text" class="form-control disabled-input" value="{{ $patient->sex }}" disabled style="border-radius: 10px; width:200px"></td>
-                        <td class="td-text"><input id="age" type="text" class="form-control disabled-input" value="{{ $patient->age }} {{ $patient->agecount }}" disabled style="border-radius: 10px; width:300px"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-4">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col" class="thead-text px-4 py-2">Contact</th>
-                        <th scope="col" class="thead-text px-4 py-2">Test Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="td-text"><input id="phone" type="text" class="form-control disabled-input" value="{{ $patient->contact }}" disabled   style="border-radius: 10px; width:200px"></td>
-                        <td class="td-text"><input id="date" type="text" class="form-control disabled-input" value="{{ $patient->test_date }}" disabled  style="border-radius: 10px; width:300px"></td>
+                        <td class="td-text"><input id="phone" type="text" class="form-control disabled-input" value="{{ $patient->contact }}" disabled   style="border-radius: 10px; width:200px;padding:0.5rem;font-size:16px;"></td>
+                        <td class="td-text"><input id="date" type="text" class="form-control disabled-input" value="{{ $patient->test_date }}" disabled  style="border-radius: 10px; width:300px;padding:0.5rem;font-size:16px;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -131,8 +136,8 @@
 </div>
 
 
- <div class="container-fluid mt-4">
-    <h2 class="text-xl font-extrabold mb-2">Test Results</h2>
+ <div class="container-fluid ">
+    <h2 class="text-xl font-semibold mb-1">Test Results</h2>
     @if($testResults && !$testResults->isEmpty())
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
@@ -144,15 +149,16 @@
     </tr>
 </thead>
 
-                <tbody>
-                    @foreach($testResults->whereNotNull('test_result') as $testResult)
-                        <tr>
-                            <td class="px-4 py-2">{{ $testResult->test_carriedout }}</td>
-                            <td class="px-4 py-2">{{ $testResult->test_result }}</td>
-                            <td class="px-4 py-2">{{ $testResult->comment }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
+<tbody>
+    @foreach($testResults->whereNotNull('test_result') as $testResult)
+        <tr>
+            <td class="px-4 py-2" style="font-family: 'Courier Sans', monospace;">{{ $testResult->test_carriedout }}</td>
+            <td class="px-4 py-2" style="font-family: 'Courier Sans', monospace;">{{ $testResult->test_result }}</td>
+            <td class="px-4 py-2" style="font-family: 'Courier Sans', monospace;">{{ $testResult->comment }}</td>
+        </tr>
+    @endforeach
+</tbody>
+
             </table>
         </div>
     @else
