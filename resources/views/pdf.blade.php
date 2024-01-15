@@ -127,7 +127,7 @@
                 <tbody>
                     <tr>
                         <td class="td-text"><input id="phone" type="text" class="form-control disabled-input" value="{{ $patient->contact }}" disabled   style="border-radius: 10px; width:200px;padding:0.5rem;font-size:16px;"></td>
-                        <td class="td-text"><input id="date" type="text" class="form-control disabled-input" value="{{ $patient->test_date }}" disabled  style="border-radius: 10px; width:300px;padding:0.5rem;font-size:16px;"></td>
+                        <td class="td-text"><input id="date" type="text" class="form-control disabled-input" value="{{ $patient->result_date }}" disabled  style="border-radius: 10px; width:300px;padding:0.5rem;font-size:16px;"></td>
                     </tr>
                 </tbody>
             </table>
@@ -152,9 +152,9 @@
 <tbody>
     @foreach($testResults->whereNotNull('test_result') as $testResult)
         <tr>
-            <td class="px-4 py-2" style="font-family: 'Courier Sans', monospace;">{{ $testResult->test_carriedout }}</td>
-            <td class="px-4 py-2" style="font-family: 'Courier Sans', monospace;">{{ $testResult->test_result }}</td>
-            <td class="px-4 py-2" style="font-family: 'Courier Sans', monospace;">{{ $testResult->comment }}</td>
+            <td class="px-4 py-1" style="font-family: 'Courier Sans', monospace;">{{ $testResult->test_carriedout }}</td>
+            <td class="px-4 py-1" style="font-family: 'Courier Sans', monospace;">{{ $testResult->test_result }}</td>
+            <td class="px-4 py-1" style="font-family: 'Courier Sans', monospace;">{{ $testResult->comment }}</td>
         </tr>
     @endforeach
 </tbody>
