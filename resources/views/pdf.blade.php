@@ -9,55 +9,25 @@
     <style>
          /* General table styling */
     table {
-        font-size: 20px; /* Adjust for overall font size */
+        font-size: 12px; /* Adjust for overall font size */
         border-collapse: collapse;
     }
 
-    th, td {
-        padding: 5px;
-        border: none;
-        text-align: left;
-        width:40px;
-    }
-
-    /* Header styling */
     .thead-text {
-        font-family: "Open Sans", sans-serif; /* Professional-looking font */
-        font-weight: 500; /* Slightly bolder for emphasis */
-        font-size: 18px; /* Slightly larger size for headers */
-        color: #333; /* Darker text for headers */
+        font-family: 'Calibri', sans-serif;
+        font-weight: semibold;
+        font-size: 12px;
+        text-align: center;
     }
 
-    /* Input styling */
-    .disabled-input {
-        background-color: #f5f5f5; /* Lighter background for disabled inputs */
-        border-color: none; /* Match table border color */
-        font-family: "Courier Sans", monospace; /* Fixed-width font for inputs */
-        font-size: 14px; /* Slightly smaller font size for inputs */
+    .td-text {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 12px;
+        text-align: center;
     }
-        .stamp {
-    position:absolute;
-    background-image: url("{{ public_path('stamp.png') }}");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 378px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: red;
-    text-align: center;
-    /* Remove padding to align text properly */
-}
 
-.date {
-    position:absolute;
-    top:6rem; /* Position in the middle vertically */
-    left: 50%;     
-    transform: translate(-50%, -50%); /* Center the text precisely */
-    font-size: 1.5rem; /* Adjust font size as needed */
-    font-weight: bold; /* Make the text bold if desired */
-}
+   
+
 
 
 
@@ -76,64 +46,36 @@
     <br>
    
     <div class="container-fluid mb-2">
-    <h2 class="fw-bold mb-1">Patient Information</h2>
+    <h2 class="fw-bold mb-3">Patient Information</h2>
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-8">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" class="thead-text  ">Patient Id</th>
-                        <th scope="col" class="thead-text ">Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-    <tr>
-        <td class="td-text">
-            <input id="patient_id" type="text" class="form-control disabled-input" value="{{ $patient->id }}" disabled style="border-radius: 10px; width:200px; padding:0.5rem; font-size:16px;">
-        </td>
-        <td class="td-text">
-            <input id="name" type="text" class="form-control disabled-input" value="{{ $patient->name }}" disabled style="border-radius: 10px; width:300px; padding:0.5rem; font-size:16px;">
-        </td>
-    </tr>
-</tbody>
-
-            </table>
-        </div>
-        <div class="col-4">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col" class="thead-text ">Sex</th>
-                        <th scope="col" class="thead-text ">Age</th>
+                        <th scope="col" class="thead-text">Patient ID</th>
+                        <th scope="col" class="thead-text">Name</th>
+                        <th scope="col" class="thead-text">Sex</th>
+                        <th scope="col" class="thead-text">Age</th>
+                        <th scope="col" class="thead-text">Contact</th>
+                        <th scope="col" class="thead-text">Test Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="td-text"><input id="sex" type="text" class="form-control disabled-input" value="{{ $patient->sex }}" disabled style="border-radius: 10px; width:200px;padding:0.5rem;font-size:16px;"></td>
-                        <td class="td-text"><input id="age" type="text" class="form-control disabled-input" value="{{ $patient->age }} {{ $patient->agecount }}" disabled style="border-radius: 10px; width:300px;padding:0.5rem;font-size:16px;"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-4">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col" class="thead-text  ">Contact</th>
-                        <th scope="col" class="thead-text ">Test Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="td-text"><input id="phone" type="text" class="form-control disabled-input" value="{{ $patient->contact }}" disabled   style="border-radius: 10px; width:200px;padding:0.5rem;font-size:16px;"></td>
-                        <td class="td-text"><input id="date" type="text" class="form-control disabled-input" value="{{ $patient->result_date }}" disabled  style="border-radius: 10px; width:300px;padding:0.5rem;font-size:16px;"></td>
+                        <td class="td-text">{{ $patient->id }}</td>
+                        <td class="td-text">{{ $patient->name }}</td>
+                        <td class="td-text">{{ $patient->sex }}</td>
+                        <td class="td-text">{{ $patient->age }} {{ $patient->agecount }}</td>
+                        <td class="td-text">{{ $patient->contact }}</td>
+                        <td class="td-text">{{ $patient->test_date }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
 
 
  <div class="container-fluid ">

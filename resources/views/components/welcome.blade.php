@@ -87,11 +87,20 @@
 
   <!-- RFTs Checkbox -->
   <div class="col-3 mb-2">
-    <div class="flex items-center ml-3 mr-4 mb-2">
-      <input type="checkbox" id="rfts" name="testRequired[]" value="Real function test (RFTs)" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
-      <label for="rfts" class="ml-2 text-gray-700">Renal function test (RFTs)</label>
-    </div>
+  <div class="flex items-center ml-3 mr-4 mb-2">
+    <label for="lftsSelect" class="ml-2 text-gray-700">Renal function test(RFTS)</label>
+    <select id="lftsSelect" name="testRequired[]" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <option value="Cl-">Cl-</option>
+      <option value="CO2">CO2</option>
+      <option value="K+">K+</option>
+      <option value="Na+">Na+</option>
+      <option value="GLU">GLU</option>
+      <option value="UREA">UREA</option>
+      <option value="CRE">CRE</option>
+      <option value="AMY">AMY</option>
+    </select>
   </div>
+</div>
 
   <!-- FSH Checkbox -->
   <div class="col-3 mb-2">
@@ -211,6 +220,50 @@
       <label for="Blood Grouping" class="ml-2 text-gray-700">Blood Grouping</label>
     </div>
   </div>
+  <div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="UricAcid" name="testRequired[]" value="Uric Acid" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="UricAcid" class="ml-2 text-gray-700">Uric Acid</label>
+    </div>
+  </div>
+ 
+
+<!-- LFTS alone-Liver function test Select -->
+<div class="col-3 mb-2">
+  <div class="flex items-center ml-3 mr-4 mb-2">
+    <label for="lftsSelect" class="ml-2 text-gray-700">LFTS alone-Liver function test</label>
+    <select id="lftsSelect" name="testRequired[]" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <option value="TP">TP</option>
+      <option value="ALB">ALB</option>
+      <option value="GLO">GLO</option>
+      <option value="A/G">A/G</option>
+      <option value="TBIL">TBIL</option>
+      <option value="ALT">ALT</option>
+      <option value="AST">AST</option>
+      <option value="GGT">GGT</option>
+      <option value="DBIL">DBIL</option>
+      <option value="IBIL">IBIL</option>
+      <option value="ALP">ALP</option>
+    </select>
+  </div>
+</div>
+
+
+
+
+  <div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="LFTS/RFT/Lipid profile" name="testRequired[]" value="LFTS/RFT/Lipid profile" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="LFTS/RFT/Lipid profile" class="ml-2 text-gray-700">LFTS/RFT/Lipid profile</label>
+    </div>
+  </div>
+  <div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="H. Pylori-Antigen(Stool)" name="testRequired[]" value="H. Pylori-Antigen(Stool)" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="H. Pylori-Antigen(Stool)" class="ml-2 text-gray-700">H. Pylori-Antigen(Stool)</label>
+    </div>
+  </div>
+  
 
   <!-- Glucose(RBS) Checkbox -->
   <div class="col-3 mb-2">
@@ -230,19 +283,48 @@
 
   <!-- Lipid profile-Cholesterol level Checkbox -->
   <div class="col-3 mb-2">
-    <div class="flex items-center ml-3 mr-4 mb-2">
-      <input type="checkbox" id="LipidProfile" name="testRequired[]" value="Lipid profile-Cholesterol level" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
-      <label for="LipidProfile" class="ml-2 text-gray-700">Lipid profile-Cholesterol level</label>
-    </div>
+  <div class="flex items-center ml-3 mr-4 mb-2">
+    <label for="lftsSelect" class="ml-2 text-gray-700">Lipid profile-cholesterol</label>
+    <select id="lftsSelect" name="testRequired[]" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <option value="TP">GLU</option>
+      <option value="ALB">TG</option>
+      <option value="GLO">CHOL</option>
+      <option value="A/G">HDL-C</option>
+      <option value="TBIL">LDL-C</option>
+      <option value="ALT">GSP</option>
+    </select>
   </div>
+</div>
 
   <!-- CBC/Full Hemogram Checkbox -->
-  <div class="col-3 mb-2">
-    <div class="flex items-center ml-3 mr-4 mb-2">
-      <input type="checkbox" id="CBC" name="testRequired[]" value="CBC/Full Hemogram" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
-      <label for="CBC" class="ml-2 text-gray-700">CBC/Full Hemogram</label>
-    </div>
+<div class="col-3 mb-2">
+  <div class="flex items-center ml-3 mr-4 mb-2">
+  <label for="CBC" class="ml-2 text-gray-700">CBC/Full Hemogram</label>
+    <select id="testSelect" name="testRequired[]" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <option value="WBC">WBC</option>
+      <option value="Neu#">Neu#</option>
+      <option value="Lym#">Lym#</option>
+      <option value="Mon#">Mon#</option>
+      <option value="Eos#">Eos#</option>
+      <option value="Bas#">Bas#</option>
+      <option value=" Neu%">Neu%</option>
+      <option value="Lym%">Lym%</option>
+      <option value="Mon%">Mon%</option>
+      <option value="Eos%">Eos%</option>
+      <option value="Bas%">Bas%</option>
+      <option value="RBC">RBC</option>
+      <option value="HGB">HGB</option>
+      <option value="HCT">HCT</option>
+      <option value="MCV">MCV</option>
+      <option value="MCH">MCH</option>
+      <option value="MCHC">MCHC</option>
+      <option value="RDW-CV">RDW-CV</option>
+      <option value="RDW-SD">RDW-SD</option>
+     
+    </select>
   </div>
+</div>
+
 
   <!-- Blood Slide for malaria Checkbox -->
   <div class="col-3 mb-2">
@@ -251,6 +333,45 @@
       <label for="BloodSlide" class="ml-2 text-gray-700">Blood Slide for malaria</label>
     </div>
   </div>
+
+  <div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="Urinalysis(Microscopy and Biochemistry)" name="testRequired[]" value="Urinalysis(Microscopy and Biochemistry)" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="Urinalysis(Microscopy and Biochemistry)" class="ml-2 text-gray-700">Urinalysis(Microscopy and Biochemistry)</label>
+    </div>
+  </div>
+
+  <div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="Stool Microscopy" name="testRequired[]" value="Stool Microscopy" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="Stool Microscopy" class="ml-2 text-gray-700">Stool Microscopy</label>
+    </div>
+  </div>
+
+
+  <div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="HBsAg screening" name="testRequired[]" value="HBsAg screening" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="HBsAg screening" class="ml-2 text-gray-700">HBsAg screening</label>
+    </div>
+  </div>
+
+  <div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="HCV antibody test" name="testRequired[]" value="HCV antibody test" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="HCV antibody test" class="ml-2 text-gray-700">HCV antibody test</label>
+    </div>
+</div>
+
+<div class="col-3 mb-2">
+    <div class="flex items-center ml-3 mr-4 mb-2">
+      <input type="checkbox" id="H.pylori-Antibody (Blood)" name="testRequired[]" value="H.pylori-Antibody (Blood)" class="rounded border-gray-300 text-indigo-500 focus:border-indigo-500 focus:ring-indigo-500">
+      <label for="H.pylori-Antibody (Blood)" class="ml-2 text-gray-700">H.pylori-Antibody (Blood)</label>
+    </div>
+</div>
+
+  
+
 
   <!-- Malaria antigen test(RDT) Checkbox -->
   <div class="col-3 mb-2">
