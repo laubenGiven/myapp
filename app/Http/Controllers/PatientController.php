@@ -1,33 +1,45 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Test_Result;
-use App\Models\User;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
      */
-
-     public function __construct()
-     {
-        
-     }
-    public function index()
+    public function __construct()
     {
-        //
+        // Constructor remains empty if not used
     }
+
+  
+
+    public function index(Request $request)
+    {
+        $validated = $request->validate([
+            'email_or_surname' => 'required',
+            'telephone_number' => 'required',
+        ]);
+    
+        // Concisely fetch the patient with eager loading
+        $patientResults = Patient::where(function ($query) use ($validated) {
+            $query->where('email', $validated['email_or_surname'])
+                  ->orWhere('name', $validated['email_or_surname']);
+        })->where('contact', $validated['telephone_number'])
+          ->with('test_result')
+          ->firstOrFail();
+    
+        return view('patientview', ['patients' => $patientResults]);
+    }
+    
+
+    
 
     public function search(Request $request)
     { 

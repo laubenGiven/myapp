@@ -8,7 +8,12 @@
           <img src="{{ Vite::asset('resources/images/logo.jpeg') }}" class="img-fluid rounded-circle" alt="Logo" style="width: 70px; height: 70px; border-radius: 50%;">
           </div>
           <div class="ml-2">
-            <h1>Welcome ,To Clinician Dashboard</h1>
+            <h1>Welcome  <span class="d-block mb-2">
+    Performed by:
+    @if(Auth::check()) <!-- Check if the user is logged in -->
+        {{ Auth::user()->name }} <!-- Display the logged-in user's name -->
+   
+</span>,To Clinician Dashboard</h1>
           </div>
 
         </div>

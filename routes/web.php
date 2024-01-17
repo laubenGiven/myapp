@@ -42,6 +42,13 @@ Route::get('/', function () {
 });
 
 
+Route::get('/patientlogin', function () {
+    return view('patientlogin');
+});
+
+Route::post('/login-patient/post', [PatientController::class,'index'])->name('patientview');
+
+
 
 
 Route::middleware(['auth', 'checkrole:clinician'])->group(function () {

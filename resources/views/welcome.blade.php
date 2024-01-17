@@ -20,6 +20,9 @@
        <div class="p-10 text-left z-10">
             <a href="{{ url('/clinicianlogin') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Clinician Dashboard</a>
         </div>
+        <div class="p-10 text-left z-10">
+            <a href="{{ url('/patientlogin') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Patient Login</a>
+        </div>
     @if (Route::has('login'))
      
         <div class="p-10 text-right z-10">
