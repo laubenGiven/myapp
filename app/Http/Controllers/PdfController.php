@@ -35,12 +35,15 @@ class PdfController extends Controller
     {
         // Eager load relationships
         $patient = Patient::with('test_result')->findOrFail($patientId);
+          // Retrieve test results
+       $result = $patient->test_result;
 
         // Prepare data
         $data = [
             'title' => 'Test Result Report',
             'testResults' => $patient->test_result,
             'patient' => $patient,
+            
         ];
 
         // Generate and stream the PDF directly

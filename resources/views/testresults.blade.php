@@ -40,7 +40,7 @@
         <input type="hidden" name="patient_id" value="{{ $patient->patient_id }}">
         <input type="hidden" name="test_carriedout" value="{{ $patient->test_carriedout }}">
         <div class="flex gap-1 items-center">
-            <input type="file" name="result_image" accept="image/*" class="w-100">
+            <input type="file" name="image_upload" accept="image/*" class="w-100">
             <input type="text" name="test_result" placeholder="Test Result" class="w-100">
             <label for="flag" class="text-gray-700">Flag</label>
             <select name="flag" class="w-150">
@@ -49,14 +49,31 @@
                 <option value="L">L</option>
                 <option value="H">H</option>
             </select>
-            <input type="text" name="ranges" placeholder="Range" class="w-100">
+            
+            <input type="text" name="range" placeholder="Range" class="w-100">
             <input type="text" name="comment" placeholder="Comment" class="w-100">
+            <label for="units" class="text-gray-700">Units</label>
+            <select name="units" class="w-150">
+                <option value="" selected></option>
+                <option value="/L">/L</option>
+                <option value="mmol/L">mmol/L</option>
+                <option value="U/L">U/L</option>
+                <option value="%">%</option>
+                <option value="umol/L">umol/L</option>
+                <option value="g/L">g/L</option>
+                <option value="fL">fL</option>
+                <option value="10^9/L">10^9/L</option>
+                <option value="g/dL">g/dL</option>
+                <option value="10^12/L">10^12/L</option>
+                <option value="pg">pg</option>
+                <option value="U/L">U/L</option>
+            </select>
             <select name="var" class="w-150">
                 <option value="" selected>Preview</option>
                 <option value="verified">Verified</option>
                 <option value="not_verified">Not Verified</option>
             </select>
-            <button type="submit" class="btn btn-info">
+            <button type="submit" class="btn btn-success">
                 <i class="fa-solid fa-check-circle"></i> Save
             </button>
         </div>
@@ -69,10 +86,10 @@
                                     <!-- <a href="{{ route('patient.edit', ['patient_id' => $patient->id]) }}" class="btn btn-primary me-2">
                                         <i class="fa-solid fa-pencil "></i> Edit
                                     </a> -->
-                                    <form action="{{ route('patient.delete', ['patient_id' => $patient->id]) }}" method="POST" class="delete-form">
+                                    <form action="{{ route('patient.delete', ['patient_id' => $patient->id]) }}" method="POST" class="delete-form ">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-info">
+                        <button type="submit" class="btn btn-danger">
                             <i class="fa-solid fa-trash "></i> Delete
                         </button>
                     </form>

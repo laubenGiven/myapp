@@ -16,8 +16,12 @@ return new class extends Migration
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('test_carriedout')->nullable();
+            $table->binary('image_upload')->nullable();
             $table->string('test_result')->nullable();
+            $table->string('flag')->nullable();
+            $table->string('range')->nullable();
             $table->string('comment')->nullable();
+            $table->string('units')->nullable();
             $table->string('preview')->nullable();
             $table->date('result_date')->default(now()->format('Y-m-d'));
             $table->timestamps();

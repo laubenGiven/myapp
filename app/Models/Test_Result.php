@@ -16,5 +16,5 @@ class Test_Result extends Model
 
 
 
-    protected $fillable = ['name','test_carriedout','test_result','comment','preview','result_date'];
+    protected $fillable = ['name','test_carriedout','image_upload','test_result','flag','range','comment','units','preview','result_date'];
 }

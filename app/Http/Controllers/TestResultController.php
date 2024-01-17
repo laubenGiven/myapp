@@ -24,16 +24,23 @@ class TestResultController extends Controller
     public function saveTestResult(Request $request, $patient_id)
 {
     $validatedData = $request->validate([
-        'test_result' => 'required',        
+        'image_upload' => 'nullable',
+        'test_result' => 'required', 
+        'flag' => 'nullable',
+        'range' => 'nullable',    
         'var' => 'nullable',
         'comment' => 'nullable',
+        'units' => 'nullable',
     ]);
 
     $testResultData = [
-
+        'image_upload' => $validatedData['image_upload'] ?? null,
         'test_result' => $validatedData['test_result'],
+        'flag' => $validatedData['flag'],
+        'range' => $validatedData['flag'],
         'var' => $validatedData['var'] ?? null,
         'comment' => $validatedData['comment'] ?? null,
+        'units' => $validatedData['units'],
     ];
 
     // Find or create the test result record
