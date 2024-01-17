@@ -17,6 +17,7 @@
 
         <!-- Styles -->
         @livewireStyles
+     
         
   <style>
     /* Custom styles */

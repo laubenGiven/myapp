@@ -1,4 +1,5 @@
 <x-guest-layout>
+
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 bg-primary text-white py-3 d-flex justify-content-between align-items-center">
@@ -8,12 +9,11 @@
           <img src="{{ Vite::asset('resources/images/logo.jpeg') }}" class="img-fluid rounded-circle" alt="Logo" style="width: 70px; height: 70px; border-radius: 50%;">
           </div>
           <div class="ml-2">
-            <h1>Welcome  <span class="d-block mb-2">
-    Performed by:
+            <h1>Welcome     
     @if(Auth::check()) <!-- Check if the user is logged in -->
         {{ Auth::user()->name }} <!-- Display the logged-in user's name -->
-   
-</span>,To Clinician Dashboard</h1>
+    @endif
+ ,To Clinician Dashboard</h1>
           </div>
 
         </div>

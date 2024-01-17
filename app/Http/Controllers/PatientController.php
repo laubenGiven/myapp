@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Patient;
@@ -39,7 +39,7 @@ class PatientController extends Controller
     }
     
 
-    
+
 
     public function search(Request $request)
     { 
