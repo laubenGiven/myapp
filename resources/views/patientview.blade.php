@@ -8,15 +8,21 @@
           <img src="{{ Vite::asset('resources/images/logo.jpeg') }}" class="img-fluid rounded-circle" alt="Logo" style="width: 70px; height: 70px; border-radius: 50%;">
           </div>
           <div class="ml-2">
-            <h1>Welcome ,To Patient Dashboard</h1>
+            <h1>Welcome  @if(Auth::check()) <!-- Check if the user is logged in -->
+        {{ Auth::user()->name }} <!-- Display the logged-in user's name -->
+    @endif,To Patient Dashboard</h1>
           </div>
 
         </div>
         <!-- Logout Button -->
         <div>
-         <a href="{{ url('/') }}" class="btn btn-danger">
-         <i class="fas fa-envelope-circle-check"></i> Log Out
-         </a>
+        @auth
+     <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <i class="fa-solid fa-user-tie"></i> <button type="submit"> Logout</button>
+      </form>
+      @endauth
+
         </div>
 
       </div>
@@ -49,7 +55,7 @@
         @foreach($testResult as $patient)
           <tr class="table-default">
             <td>{{$patient->patient_id}}</td>
-            <td>{{$patient->name}}</td>
+            <td>{{$patient->sname}} {{$patient->lname}} </td>
             <td>{{$patient->test_carriedout}}</td>
             <td>{{$patient->test_result}}</td>
             <td>{{$patient->result_date}}</td>           

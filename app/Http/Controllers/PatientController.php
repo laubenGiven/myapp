@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
+use App\Models\Test_Result;
+
 
 
 
@@ -20,6 +22,14 @@ class PatientController extends Controller
     {
         
     }
+
+    public function logout()
+{
+    Auth::logout();
+
+    // Redirect to the home page or any other desired page after logout
+    return redirect('/');
+}
   
 
     public function index(Request $request)
@@ -56,7 +66,7 @@ class PatientController extends Controller
  
        
       // Perform search on patients and eager load related test_results
-      $patients = Test_Result::where('name', 'like', '%' . $searchQuery . '%')
+      $patients = Test_Result::where('sname', 'like', '%' . $searchQuery . '%')
       ->orWhere('patient_id', 'like', '%' . $searchQuery . '%')      
       ->get();
 
@@ -101,7 +111,8 @@ class PatientController extends Controller
     {
         // Validate the request data
         $validatedData = $request->validate([
-            'name' => 'required',
+            'sname' => 'required',
+            'lname' => 'required',
             'email' => 'required|email|unique:users',
             'contact' => 'required',
             'sex' => 'required',
@@ -112,7 +123,7 @@ class PatientController extends Controller
 
             // Create a new User instance
             $user = User::create([
-                'name' => $validatedData['name'],
+                'name' => $validatedData['sname'],
                 'role' => 'patient',
                 'email' => $validatedData['email'],
                 'password' => bcrypt($validatedData['contact']),
@@ -121,7 +132,8 @@ class PatientController extends Controller
             // Create a new Patient instance associated with the User
            // Create a new patient instance
         $patient = new Patient([
-           'name' => $validatedData['name'],
+           'sname' => $validatedData['sname'],
+           'lname' => $validatedData['lname'],
            'email' => $validatedData['email'],
            'contact' => $validatedData['contact'],
            'sex' => $validatedData['sex'],
@@ -135,7 +147,7 @@ class PatientController extends Controller
                // Save each test required as a separate row associated with the patient
         foreach ($validatedData['testRequired'] ?? [] as $test) {
            $patient->test_result()->create([
-               'name'=>$validatedData['name'],
+               'sname'=>$validatedData['sname'],
                'test_carriedout' => $test,
               
                

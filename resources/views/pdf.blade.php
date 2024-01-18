@@ -60,7 +60,8 @@
                 <thead>
                     <tr>
                         <th scope="col" class="thead-text">Patient ID</th>
-                        <th scope="col" class="thead-text">Name</th>
+                        <th scope="col" class="thead-text">SurName</th>
+                        <th scope="col" class="thead-text">LastName</th>
                         <th scope="col" class="thead-text">Sex</th>
                         <th scope="col" class="thead-text">Age</th>
                         <th scope="col" class="thead-text">Contact</th>
@@ -70,7 +71,8 @@
                 <tbody>
                     <tr>
                         <td class="td-text">{{ $patient->id }}</td>
-                        <td class="td-text">{{ $patient->name }}</td>
+                        <td class="td-text">{{ $patient->sname }}</td>
+                        <td class="td-text">{{ $patient->lname }}</td>
                         <td class="td-text">{{ $patient->sex }}</td>
                         <td class="td-text">{{ $patient->age }} {{ $patient->agecount }}</td>
                         <td class="td-text">{{ $patient->contact }}</td>

@@ -46,6 +46,9 @@ Route::get('/patientlogin', function () {
     return view('patientlogin');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [PatientController::class,'logout'])->name('logout');
+});
 
 
 

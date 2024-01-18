@@ -27,7 +27,7 @@
     </div>
     <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="{{ $patient->name }}" class="form-control">
+        <input type="text" name="name" id="name" value="{{ $patient->sname }}" class="form-control">
     </div>
     <div class="form-group">
         <label for="test_carriedout">Test Carried Out:</label>

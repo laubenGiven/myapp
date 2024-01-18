@@ -19,9 +19,13 @@
         </div>
         <!-- Logout Button -->
         <div>
-         <a href="{{ url('/') }}" class="btn btn-danger">
-         <i class="fas fa-envelope-circle-check"></i> Log Out
-         </a>
+        @auth
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <i class="fa-solid fa-user-tie"></i> <button type="submit">Logout</button>
+    </form>
+@endauth
+
         </div>
 
       </div>
@@ -48,24 +52,20 @@
     <thead>
         <tr>
             <th>Patient Id</th>
-            <th>Name</th>
-            <th>Age</th>
+            <th>Name</th>           
             <th>Test Carried Out</th>
-            <th>Test Results</th>
-            <th>Comment</th>
-            <th>Test Date</th>
+            <th>Test Results</th>           
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
                 @foreach($patients->whereNotNull('test_result') as $patient)
                             <tr >
                                 <td>{{ $patient->patient_id }}</td>
-                                <td>{{ $patient->name }}</td>
-                                <td>{{ $patient->age }}{{ $patient->agecount }}</td>
+                                <td>{{ $patient->sname }} <span>{{ $patient->lname }}</span></td>                               
                                 <td>{{ $patient->test_carriedout }}</td>
                                 <td>{{ $patient->test_result }}</td>
-                                <td>{{ $patient->comment }}</td>
-                                <td>{{ $patient->result_date }}</td>                         
+                                                                                
                                    
                                 
                             </tr>

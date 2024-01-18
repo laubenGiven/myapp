@@ -32,7 +32,7 @@
         @foreach($patients as $patient)
           <tr class="table-default">
             <td>{{$patient->patient_id}}</td>
-            <td>{{$patient->name}}</td>
+            <td>{{$patient->sname}} <span> {{$patient->lname}}</span> </td>
             <td>{{$patient->test_carriedout}}</td>
             <td>{{$patient->test_result}}</td>
             <td>{{$patient->result_date}}</td>

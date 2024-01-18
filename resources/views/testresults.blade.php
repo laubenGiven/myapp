@@ -31,7 +31,7 @@
                     @foreach($patients->whereNull('test_result') as $patient)
                             <tr >
                                 <td>{{ $patient->patient_id }}</td>
-                                <td>{{ $patient->name }}</td>
+                                <td>{{ $patient->sname }}</td>
                                 <td>{{ $patient->test_carriedout }}</td>
                                
                                 <td>
@@ -68,11 +68,11 @@
                 <option value="pg">pg</option>
                 <option value="U/L">U/L</option>
             </select>
-            <select name="var" class="w-150">
+            <!-- <select name="var" class="w-150">
                 <option value="" selected>Preview</option>
                 <option value="verified">Verified</option>
                 <option value="not_verified">Not Verified</option>
-            </select>
+            </select> -->
             <button type="submit" class="btn btn-success">
                 <i class="fa-solid fa-check-circle"></i> Save
             </button>
@@ -120,7 +120,7 @@
             <th scope="col">Test Carried Out</th>
             <th scope="col">Test Results</th>
             <th scope="col">Comment</th>
-            <th scope="col">Preview</th>
+            <th scope="col">Previewed By</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -129,7 +129,7 @@
             <tr>
                 <!-- Display patient details -->
                 <td>{{ $patient->patient_id }}</td>
-                <td>{{ $patient->name }}</td>
+                <td>{{ $patient->sname }}</td>
                 <td>{{ $patient->test_carriedout }}</td>
                 <td>{{ $patient->test_result }}</td>
                 <td>{{ $patient->comment }}</td>

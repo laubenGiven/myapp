@@ -40,7 +40,7 @@ class TestResultController extends Controller
         'image_upload' => $validatedData['image_upload'] ?? null,
         'test_result' => $validatedData['test_result'],
         'flag' => $validatedData['flag'],
-        'range' => $validatedData['flag'],
+        'range' => $validatedData['range'],
         'var' => $validatedData['var'] ?? null,
         'comment' => $validatedData['comment'] ?? null,
         'units' => $validatedData['units'],
@@ -94,15 +94,24 @@ class TestResultController extends Controller
      * Store a newly created resource in storage.
      */
     public function clinicianDashBoard()
-{
-    $patients = Test_Result::whereNotNull('test_result')
-        ->orderBy('result_date', 'desc')
-        ->take(20)
-        ->get();
-
-    return view('clinicianregister', ['patients'=>$patients]);
-}
-
+    {  
+         $result = Patient:: with('test_result')->whereHas('test_result', function ($query) {
+        $query->whereNotNull('test_result');
+    })
+    ->orderByDesc('test_date')
+    ->take(20)
+    ->get();
+        $patients = Test_Result::with('patient')
+            ->whereHas('patient', function ($query) {
+                $query->whereNotNull('test_result');
+            })
+            ->orderByDesc('result_date')
+            ->take(20)
+            ->get();
+    
+        return view('clinicianregister', ['patients'=>$patients,'result'=>$result]);
+    }
+    
 
     /**
      * Display the specified resource.
