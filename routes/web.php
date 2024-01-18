@@ -46,8 +46,15 @@ Route::get('/patientlogin', function () {
     return view('patientlogin');
 });
 
-Route::post('/login-patient/post', [PatientController::class,'index'])->name('patientview');
 
+
+
+
+Route::middleware(['auth', 'checkrole:patient'])->group(function () {
+    Route::post('/login-patient/post', [PatientController::class, 'index'])->name('patientlogin');
+    Route::get('/patientDashBoard', [TestResultController::class, 'patientDashBoard'])->name('patientdash');
+   
+});
 
 
 

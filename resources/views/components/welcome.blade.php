@@ -19,7 +19,7 @@
 
     <div class="mb-4">
         <label for="contact" class="block text-sm font-medium text-gray-700"> Contact</label>
-        <input type="number" id="contact" name="contact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('contact') }}">
+        <input type="tel" id="contact" name="contact" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('contact') }}">
     </div>
 
     <div class="mb-4">

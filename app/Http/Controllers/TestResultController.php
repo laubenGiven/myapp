@@ -7,6 +7,9 @@ use App\Http\Requests\UpdateTest_ResultRequest;
 use App\Models\Test_Result;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TestResultController extends Controller
 {
@@ -68,8 +71,24 @@ class TestResultController extends Controller
 
 
     }
+    public function patientDashBoard()
+    {
+        try {
+            // Fetch the logged-in patient's information
+            $patient = Auth::user();
 
-   
+            // Fetch the test results for the specific patient
+            $testResults = Test_Result::where('patient_id', $patient->id)
+                ->whereNotNull('test_result')
+                ->orderBy('result_date', 'desc')
+                ->take(20)
+                ->get();
+
+            return view('patientview', ['patient' => $patient, 'testResult' => $testResults]);
+        } catch (\Exception $e) {
+            return redirect()->route('patientdash')->with('error', 'An error occurred.');
+        }
+    }
 
     /**
      * Store a newly created resource in storage.

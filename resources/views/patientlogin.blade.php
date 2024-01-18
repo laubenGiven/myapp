@@ -13,7 +13,7 @@
         <br>
         <div class="login-form mt-6">
           <h2 class="text-center mb-4 ml-4 font-extrabold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"> Patient Login</h2>
-          <form action="{{ route( 'patientview' ) }}" method="POST">
+          <form action="{{ route( 'patientlogin' ) }}" method="POST">
            @csrf
             <div class="form-group p-3">
             <label for="inputEmail">Email address or Surname </label>

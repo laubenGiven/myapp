@@ -46,9 +46,9 @@
           </tr>
         </thead>
         <tbody>
-        @foreach($patients as $patient)
+        @foreach($testResult as $patient)
           <tr class="table-default">
-            <td>{{$patient->id}}</td>
+            <td>{{$patient->patient_id}}</td>
             <td>{{$patient->name}}</td>
             <td>{{$patient->test_carriedout}}</td>
             <td>{{$patient->test_result}}</td>
