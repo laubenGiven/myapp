@@ -148,6 +148,9 @@ class PatientController extends Controller
         foreach ($validatedData['testRequired'] ?? [] as $test) {
            $patient->test_result()->create([
                'sname'=>$validatedData['sname'],
+               'lname'=>$validatedData['lname'],
+               'age' => $validatedData['age'],
+               'agecount' => $validatedData['agecount'],
                'test_carriedout' => $test,
               
                

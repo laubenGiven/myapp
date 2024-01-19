@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="#">Search Patient</a>
             <form action="{{ route('search') }}" method="GET" class="d-flex">
-                <input name="search" class="form-control me-2" type="search" placeholder="Search by Name ">
+                <input name="search" class="form-control me-2" type="search" placeholder="Search by SurName ">
                 <button class="btn btn-outline-light" type="submit">Search</button>
             </form>
         </div>
@@ -52,20 +52,24 @@
     <thead>
         <tr>
             <th>Patient Id</th>
-            <th>Name</th>           
+            <th>SurName</th> 
+            <th>LastName</th> 
+            <th> Age </th>          
             <th>Test Carried Out</th>
             <th>Test Results</th>           
-            <th>Actions</th>
+            <th> Comments</th>
         </tr>
     </thead>
     <tbody>
                 @foreach($patients->whereNotNull('test_result') as $patient)
                             <tr >
                                 <td>{{ $patient->patient_id }}</td>
-                                <td>{{ $patient->sname }} <span>{{ $patient->lname }}</span></td>                               
+                                <td>{{ $patient->sname }} </td>
+                                <td>{{ $patient->lname }}</td>
+                                <td>{{ $patient->age }} <span>{{ $patient->agecount }}</span></td>                                                       
                                 <td>{{ $patient->test_carriedout }}</td>
                                 <td>{{ $patient->test_result }}</td>
-                                                                                
+                                <td>{{ $patient->comment }}</td>                 
                                    
                                 
                             </tr>

@@ -65,7 +65,7 @@ Route::post('/clinicianlogin', [PatientController::class,'loginClinician'])->nam
 
 Route::middleware(['auth', 'checkrole:clinician'])->group(function () {
      // Routes accessible only to clinicians    
-     
+     Route::get('sendresults/generateprint-pdf/{patient_id}', [PdfController::class, 'generateAndDisplayPdf'])->name('generateprint2.pdf');
      Route::get('/clinicianDashBoard',[TestResultController::class,'clinicianDashBoard'])->name('cliniciandash');
      Route::get('/search/', [PatientController::class, 'search'])->name('search');
 

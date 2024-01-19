@@ -80,7 +80,7 @@ class TestResultController extends Controller
             $patient = Auth::user();
 
             // Fetch the test results for the specific patient
-            $testResults = Test_Result::where('patient_id', $patient->id)
+            $testResults = Test_Result::where('user_id', $patient->id)
                 ->whereNotNull('test_result')
                 ->orderBy('result_date', 'desc')
                 ->take(20)

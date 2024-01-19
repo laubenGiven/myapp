@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained()->onDelete('cascade');
             $table->string('sname');
+            $table->string('lname');
+            $table->integer('age')->nullable();
+            $table->string('agecount')->nullable();
             $table->string('test_carriedout')->nullable();
             $table->binary('image_upload')->nullable();
             $table->string('test_result')->nullable();
