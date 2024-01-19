@@ -14,7 +14,7 @@
            </div>
         @endif
 
-            <div class="bg-white border-b border-gray-200 p-2 lg:p-2 container-fluid">
+            <div class="bg-white border-b border-gray-200 p-1 lg:p-1 container-fluid">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -51,7 +51,6 @@
             </select>
             
             <input type="text" name="range" placeholder="Range" class="w-100">
-            <input type="text" name="comment" placeholder="Comment" class="w-100">
             <label for="units" class="text-gray-700">Units</label>
             <select name="units" class="w-150">
                 <option value="" selected></option>
@@ -68,6 +67,8 @@
                 <option value="pg">pg</option>
                 <option value="U/L">U/L</option>
             </select>
+            <input type="text" name="comment" placeholder="Comment" class="w-100">
+           
             <!-- <select name="var" class="w-150">
                 <option value="" selected>Preview</option>
                 <option value="verified">Verified</option>
@@ -119,7 +120,9 @@
             <th scope="col">Patient Name</th>
             <th scope="col">Test Carried Out</th>
             <th scope="col">Test Results</th>
-            <th scope="col">Comment</th>
+            <th scope="col">flag</th>
+            <th scope="col">Ref Range</th>
+            <th scope="col">SI Units</th>
             <th scope="col">Previewed By</th>
             <th scope="col">Actions</th>
         </tr>
@@ -132,7 +135,9 @@
                 <td>{{ $patient->sname }}</td>
                 <td>{{ $patient->test_carriedout }}</td>
                 <td>{{ $patient->test_result }}</td>
-                <td>{{ $patient->comment }}</td>
+                <td>{{ $patient->flag }}</td>
+                <td>{{ $patient->range }}</td>
+                <td>{{ $patient->units}}</td>
                 <td>{{ $patient->preview }}</td>
                 <td class="flex">
                     <!-- Edit button -->

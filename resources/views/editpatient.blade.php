@@ -37,6 +37,19 @@
         <label for="test_result">Test Result:</label>
         <input type="text" name="test_result" id="test_result" value="{{ $patient->test_result }}" class="form-control">
     </div>
+
+    <div class="form-group">
+        <label for="flag">Flag:</label>
+        <input type="text" name="flag" id="flag" value="{{ $patient->flag }}" class="form-control">
+    </div>
+    <div class="form-group mb-3">
+        <label for="range"> Range:</label>
+        <input type="text" name="range" id="range" value="{{ $patient->range }}" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="units">SI Units:</label>
+        <input type="text" name="units" id="units" value="{{ $patient->units }}" class="form-control">
+    </div>
     <div class="form-group">
         <label for="comment">Comment:</label>
         <input type="text" name="comment" id="comment" value="{{ $patient->comment }}" class="form-control">

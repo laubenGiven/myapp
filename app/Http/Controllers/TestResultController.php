@@ -166,6 +166,9 @@ class TestResultController extends Controller
             'name' => 'required',
             'test_carriedout' => 'required',
             'test_result' => 'required',
+            'flag' => 'nullable',
+            'range' => 'nullable',
+            'units' => 'nullable',  
             'comment' => 'nullable',
             'preview' => 'nullable',
         ]);
