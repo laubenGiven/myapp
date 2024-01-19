@@ -9,11 +9,11 @@
        @csrf <!-- Adding CSRF token -->
        <div class="mb-4">
         <label for="sname" class="block text-sm font-medium text-gray-700">SurName</label>
-        <input type="text" id="sname" name="sname" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required value="{{ old('name') }}">
+        <input type="text" id="sname" name="sname" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required value="{{ old('sname') }}">
     </div>
     <div class="mb-4">
         <label for="lname" class="block text-sm font-medium text-gray-700">LastName</label>
-        <input type="text" id="lname" name="lname" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required value="{{ old('name') }}">
+        <input type="text" id="lname" name="lname" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required value="{{ old('lname') }}">
     </div>
 
 

@@ -73,7 +73,7 @@
                 <option value="verified">Verified</option>
                 <option value="not_verified">Not Verified</option>
             </select> -->
-            <button type="submit" class="btn btn-success">
+            <button type="submit" class="btn btn-info  bg-green-900z">
                 <i class="fa-solid fa-check-circle"></i> Save
             </button>
         </div>
@@ -89,7 +89,7 @@
                                     <form action="{{ route('patient.delete', ['patient_id' => $patient->id]) }}" method="POST" class="delete-form ">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">
+                        <button type="submit" class="btn btn-info bg-red-900">
                             <i class="fa-solid fa-trash "></i> Delete
                         </button>
                     </form>
@@ -111,7 +111,7 @@
 
             <div  class="bg-white border-b border-gray-200 p-6 lg:p-8>
 
-            <div class="bg-white border-b border-gray-200 p-2 lg:p-2">
+            <div class="bg-white border-b border-gray-200 p-1 lg:p-1">
             <table class="table table-hover">
     <thead>
         <tr>
