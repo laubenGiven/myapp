@@ -18,10 +18,10 @@
     <body class="antialiased">
     <div class=" relative p-6 sm:flex sm:justify-between sm:items-center  bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
        <div class="p-10 text-left z-10">
-            <a href="{{ url('/clinicianlogin') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Clinician Dashboard</a>
+            <a href="{{ route('clinician') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Clinician Dashboard</a>
         </div>
         <div class="p-10 text-left z-10">
-            <a href="{{ url('/patientlogin') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Patient Login</a>
+            <a href="{{ route('patientloginshow') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Patient Login</a>
         </div>
     @if (Route::has('login'))
      

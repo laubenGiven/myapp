@@ -17,8 +17,7 @@
             <div>
             <x-label for="role" value="{{ __('Role') }}" />
              <select name="role" id="role" class="block mt-1 w-full">
-                  <option value="technician">Technician</option>
-                  <option value="patient">patient</option>
+                  <option value="technician">Technician</option>                  
                   <option value="clinician">Clinician</option>
              </select>
              </div>

@@ -18,11 +18,13 @@ class TestResultController extends Controller
      */
     public function index()
     {
-        $patients = Test_Result::all();
-
+        // Retrieve records where test_carriedout is not null
+        $patients = Test_Result::whereNotNull('test_carriedout')->get();
+    
         // Pass the fetched patients data to the view
-        return view('testresults', ['patients'=>$patients]);
+        return view('testresults', ['patients' => $patients]);
     }
+    
 
     public function saveTestResult(Request $request, $patient_id)
 {

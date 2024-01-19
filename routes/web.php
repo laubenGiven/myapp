@@ -44,27 +44,28 @@ Route::get('/', function () {
 
 Route::get('/patientlogin', function () {
     return view('patientlogin');
-});
+})->name('patientloginshow');
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [PatientController::class,'logout'])->name('logout');
 });
 
 
+Route::post('/loginpatient', [PatientController::class, 'index'])->name('patientlogin');
 
 
 Route::middleware(['auth', 'checkrole:patient'])->group(function () {
-    Route::post('/login-patient/post', [PatientController::class, 'index'])->name('patientlogin');
+      
     Route::get('/patientDashBoard', [TestResultController::class, 'patientDashBoard'])->name('patientdash');
    
 });
 
-
+Route::get('/clinicianloginshow',[TestResultController::class,'clinicianshow'])->name('clinician');
+Route::post('/clinicianlogin', [PatientController::class,'loginClinician'])->name('loginClinician');
 
 Route::middleware(['auth', 'checkrole:clinician'])->group(function () {
-     // Routes accessible only to clinicians
-     Route::post('/login-clinician/post', [PatientController::class,'loginClinician'])->name('loginClinician');
-     Route::get('/clinicianlogin',[TestResultController::class,'clinicianshow'])->name('clinician');
+     // Routes accessible only to clinicians    
+     
      Route::get('/clinicianDashBoard',[TestResultController::class,'clinicianDashBoard'])->name('cliniciandash');
      Route::get('/search/', [PatientController::class, 'search'])->name('search');
 
