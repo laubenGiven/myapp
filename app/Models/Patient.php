@@ -18,5 +18,5 @@ class Patient extends Model
    
    
    
-protected $fillable = ['sname','lname','email','contact','sex','age','agecount','test_date'];
+protected $fillable = ['user_id','sname','lname','email','contact','sex','age','agecount','test_date'];
 }

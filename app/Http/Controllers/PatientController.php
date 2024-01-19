@@ -119,50 +119,50 @@ class PatientController extends Controller
             'age' => 'required|integer',
             'agecount' => 'required',
             'testRequired' => 'sometimes|array',
-        ]);       
-
-            // Create a new User instance
-            $user = User::create([
-                'name' => $validatedData['sname'],
-                'role' => 'patient',
-                'email' => $validatedData['email'],
-                'password' => bcrypt($validatedData['contact']),
-            ]);
-
-            // Create a new Patient instance associated with the User
-           // Create a new patient instance
+        ]);
+    
+        // Create a new User instance
+        $user = User::create([
+            'name' => $validatedData['sname'],
+            'role' => 'patient',
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['contact']),
+        ]);
+    
+        // Get the ID of the newly created user
+        $userId = $user->id; // This is the ID you need for the patient record
+    
+        // Create a new Patient instance associated with the User
         $patient = new Patient([
-           'sname' => $validatedData['sname'],
-           'lname' => $validatedData['lname'],
-           'email' => $validatedData['email'],
-           'contact' => $validatedData['contact'],
-           'sex' => $validatedData['sex'],
-           'age' => $validatedData['age'],
-           'agecount' => $validatedData['agecount'],
-          //  'test_date' => $validatedData['test_date'],
-       ]);
-           // Save the patient to the database
+           'user_id' => $userId, // Set the user_id for the patient 
+            'sname' => $validatedData['sname'],
+            'lname' => $validatedData['lname'],
+            'email' => $validatedData['email'],
+            'contact' => $validatedData['contact'],
+            'sex' => $validatedData['sex'],
+            'age' => $validatedData['age'],
+            'agecount' => $validatedData['agecount'],
+            // 'test_date' => $validatedData['test_date'],
+        ]);
+        // Save the patient to the database
         $patient->save();
-
-               // Save each test required as a separate row associated with the patient
+    
+        // Save each test required as a separate row associated with the patient
         foreach ($validatedData['testRequired'] ?? [] as $test) {
-           $patient->test_result()->create([
-               'sname'=>$validatedData['sname'],
-               'lname'=>$validatedData['lname'],
-               'age' => $validatedData['age'],
-               'agecount' => $validatedData['agecount'],
-               'test_carriedout' => $test,
-              
-               
-           ]);
-          }         
-
-            // Redirect or return a response as needed
-            return redirect()->route('results')->with('success', 'Patient and test results created successfully!');
-       
+            $patient->test_result()->create([  
+                'user_id' => $userId,            
+                'sname' => $validatedData['sname'],
+                'lname' => $validatedData['lname'],
+                'age' => $validatedData['age'],
+                'agecount' => $validatedData['agecount'],
+                'test_carriedout' => $test,
+            ]);
+        }
+    
+        // Redirect or return a response as needed
+        return redirect()->route('results')->with('success', 'Patient and test results created successfully!');
     }
-
-
+    
 
     /**
      * Display the specified resource.

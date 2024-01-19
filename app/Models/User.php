@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasOne ;
+use Illuminate\Database\Eloquent\Model;
 
 
 class User extends Authenticatable 
@@ -41,7 +42,11 @@ class User extends Authenticatable
 //     return $this->hasOne(Patient::class);
 // }
 
-   
+public function patient(): HasOne
+{
+    return $this->hasOne(Patient::class, 'user_id', 'id');
+    
+}
 
    
     /**

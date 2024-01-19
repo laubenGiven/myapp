@@ -57,6 +57,7 @@ Route::post('/loginpatient', [PatientController::class, 'index'])->name('patient
 Route::middleware(['auth', 'checkrole:patient'])->group(function () {
       
     Route::get('/patientDashBoard', [TestResultController::class, 'patientDashBoard'])->name('patientdash');
+    Route::get('patient/downloadprint-pdf/{patient_id}', [PdfController::class, 'generateAndDisplayPdf'])->name('downloadprint.pdf');
    
 });
 

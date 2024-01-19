@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->Integer('user_id')->nullable();
             $table->string('sname');
             $table->string('lname');
             $table->string('email')->nullable();
@@ -24,7 +23,7 @@ return new class extends Migration
             $table->string('agecount')->nullable();
             $table->date('test_date')->default(now()->format('Y-m-d')); 
             $table->timestamps(); 
-
+                      
             
         });
     }

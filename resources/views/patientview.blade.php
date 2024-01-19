@@ -61,7 +61,7 @@
             <td>{{$patient->result_date}}</td>           
             <td>             
                 
-                 <a href="{{ route('generateprint.pdf', ['patient_id' => $patient->patient_id]) }}" class="btn btn-success">
+                 <a href="{{ route('downloadprint.pdf', ['patient_id' => $patient->patient_id]) }}" class="btn btn-success">
                       <i class="fa-solid fa-print fa-lg"></i> Download To Print
                   </a>
              </td>

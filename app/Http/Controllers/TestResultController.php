@@ -86,7 +86,7 @@ class TestResultController extends Controller
                 ->take(20)
                 ->get();
 
-            return view('patientview', ['patient' => $patient, 'testResult' => $testResults]);
+            return view('patientview', ['testResult' => $testResults]);
         } catch (\Exception $e) {
             return redirect()->route('patientdash')->with('error', 'An error occurred.');
         }
