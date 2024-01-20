@@ -91,6 +91,41 @@ if (successAlert) {
     }, 5000); // 5000 milliseconds = 5 seconds
 }
 
+
+// JavaScript to toggle the LFT checkboxes
+function toggleLFTCheckboxes4(source) {
+    var checkboxes = document.querySelectorAll('.lfts-checkbox');
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
+
+// JavaScript to toggle the LFT checkboxes
+function toggleLFTCheckboxes3(source) {
+    var checkboxes = document.querySelectorAll('.lp-checkbox');
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
+
+// JavaScript to toggle the LFT checkboxes
+function toggleLFTCheckboxes2(source) {
+    var checkboxes = document.querySelectorAll('.cbc-checkbox');
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
+
+
+// JavaScript to toggle the LFT checkboxes
+function toggleLFTCheckboxes1(source) {
+    var checkboxes = document.querySelectorAll('.renal-checkbox');
+    for (var i = 0, n = checkboxes.length; i < n; i++) {
+        checkboxes[i].checked = source.checked;
+    }
+}
+
+
    </script>
   
     </body>

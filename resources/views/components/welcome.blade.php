@@ -38,8 +38,8 @@
 
     <div class="mb-4" style="display:flex;">
         <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
-        <input type="number" id="age" name="age" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('age') }}">
-        <select id="agecount" name="agecount" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        <input type="number" id="age" name="age" class="mt-1 block w-50 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" value="{{ old('age') }}">
+        <select id="agecount" name="agecount" class="mt-1 block w-50 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
             <option value="months" {{ old('agecount') == 'months' ? 'selected' : '' }}>months</option>
             <option value="years" {{ old('agecount') == 'years' ? 'selected' : '' }}>years</option>
         </select>
@@ -414,48 +414,55 @@
   </div>
   
   <!-- RFTs Checkbox -->
-<div class="col-3 mb-2">
+<div class="col-5 mb-2">
     <div class="flex flex-col ml-3 mr-4 mb-2">
         <label class="ml-2 text-gray-700">Renal function test (RFTS)</label>
 
         <div class="flex flex-wrap">
+
+               <!-- Select All Checkbox -->
+           <div class="flex items-center mb-2 mr-4">
+                <input type="checkbox" id="renal_select_all" class="mr-2" onchange="toggleLFTCheckboxes1(this)">
+                <label for="renal_select_all">Select All</label>
+            </div>
+
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="clCheckbox" name="testRequired[]" value="Cl-" class="mr-2">
+                <input type="checkbox" id="clCheckbox" name="testRequired[]" value="Cl-" class="mr-2 renal-checkbox">
                 <label for="clCheckbox">Cl-</label>
             </div>
 
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="co2Checkbox" name="testRequired[]" value="CO2" class="mr-2">
+                <input type="checkbox" id="co2Checkbox" name="testRequired[]" value="CO2" class="mr-2 renal-checkbox">
                 <label for="co2Checkbox">CO2</label>
             </div>
 
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="kCheckbox" name="testRequired[]" value="K+" class="mr-2">
+                <input type="checkbox" id="kCheckbox" name="testRequired[]" value="K+" class="mr-2 renal-checkbox">
                 <label for="kCheckbox">K+</label>
             </div>
 
             <div class="flex items-center mb-2">
-                <input type="checkbox" id="naCheckbox" name="testRequired[]" value="Na+" class="mr-2">
+                <input type="checkbox" id="naCheckbox" name="testRequired[]" value="Na+" class="mr-2 renal-checkbox">
                 <label for="naCheckbox">Na+</label>
             </div>
 
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="gluCheckbox" name="testRequired[]" value="GLU" class="mr-2">
+                <input type="checkbox" id="gluCheckbox" name="testRequired[]" value="GLU" class="mr-2 renal-checkbox">
                 <label for="gluCheckbox">GLU</label>
             </div>
 
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="ureaCheckbox" name="testRequired[]" value="UREA" class="mr-2">
+                <input type="checkbox" id="ureaCheckbox" name="testRequired[]" value="UREA" class="mr-2 renal-checkbox">
                 <label for="ureaCheckbox">UREA</label>
             </div>
 
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="creCheckbox" name="testRequired[]" value="CRE" class="mr-2">
+                <input type="checkbox" id="creCheckbox" name="testRequired[]" value="CRE" class="mr-2 renal-checkbox">
                 <label for="creCheckbox">CRE</label>
             </div>
 
             <div class="flex items-center mb-2">
-                <input type="checkbox" id="amyCheckbox" name="testRequired[]" value="AMY" class="mr-2">
+                <input type="checkbox" id="amyCheckbox" name="testRequired[]" value="AMY" class="mr-2 renal-checkbox">
                 <label for="amyCheckbox">AMY</label>
             </div>
         </div>
@@ -464,146 +471,152 @@
 
 
 <!-- CBC/Full Hemogram Checkbox -->
-<div class="col-4 mb-2 mr-4">
+<div class="col-6 mb-2 mr-4">
     <div class="flex flex-col ml-2 mr-4 mb-2">
         <label class="text-gray-700">CBC/Full Hemogram</label>
 
         <div class="flex flex-wrap">
+
+             <!-- Select All Checkbox -->
+           <div class="flex items-center mb-2 mr-4">
+                <input type="checkbox" id="cbc_select_all" class="mr-2" onchange="toggleLFTCheckboxes2(this)">
+                <label for="cbc_select_all">Select All</label>
+            </div>
             <!-- WBC -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_WBC" name="testRequired[]" value="WBC" class="mr-2">
+                <input type="checkbox" id="cbc_WBC" name="testRequired[]" value="WBC" class="mr-2 cbc-checkbox ">
                 <label for="cbc_WBC">WBC</label>
             </div>
 
             <!-- Neu# -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Neu#" name="testRequired[]" value="Neu#" class="mr-2">
+                <input type="checkbox" id="cbc_Neu#" name="testRequired[]" value="Neu#" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Neu#">Neu#</label>
             </div>
 
             <!-- Lym# -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Lym#" name="testRequired[]" value="Lym#" class="mr-2">
+                <input type="checkbox" id="cbc_Lym#" name="testRequired[]" value="Lym#" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Lym#">Lym#</label>
             </div>
 
             <!-- Mon# -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Mon#" name="testRequired[]" value="Mon#" class="mr-2">
+                <input type="checkbox" id="cbc_Mon#" name="testRequired[]" value="Mon#" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Mon#">Mon#</label>
             </div>
 
             <!-- Eos# -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Eos#" name="testRequired[]" value="Eos#" class="mr-2">
+                <input type="checkbox" id="cbc_Eos#" name="testRequired[]" value="Eos#" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Eos#">Eos#</label>
             </div>
 
             <!-- Bas# -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Bas#" name="testRequired[]" value="Bas#" class="mr-2">
+                <input type="checkbox" id="cbc_Bas#" name="testRequired[]" value="Bas#" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Bas#">Bas#</label>
             </div>
 
             <!-- Neu% -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Neu%" name="testRequired[]" value="Neu%" class="mr-2">
+                <input type="checkbox" id="cbc_Neu%" name="testRequired[]" value="Neu%" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Neu%">Neu%</label>
             </div>
 
             <!-- Lym% -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Lym%" name="testRequired[]" value="Lym%" class="mr-2">
+                <input type="checkbox" id="cbc_Lym%" name="testRequired[]" value="Lym%" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Lym%">Lym%</label>
             </div>
 
             <!-- Mon% -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Mon%" name="testRequired[]" value="Mon%" class="mr-2">
+                <input type="checkbox" id="cbc_Mon%" name="testRequired[]" value="Mon%" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Mon%">Mon%</label>
             </div>
 
             <!-- Eos% -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Eos%" name="testRequired[]" value="Eos%" class="mr-2">
+                <input type="checkbox" id="cbc_Eos%" name="testRequired[]" value="Eos%" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Eos%">Eos%</label>
             </div>
 
             <!-- Bas% -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_Bas%" name="testRequired[]" value="Bas%" class="mr-2">
+                <input type="checkbox" id="cbc_Bas%" name="testRequired[]" value="Bas%" class="mr-2 cbc-checkbox ">
                 <label for="cbc_Bas%">Bas%</label>
             </div>
 
             <!-- RBC -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_RBC" name="testRequired[]" value="RBC" class="mr-2">
+                <input type="checkbox" id="cbc_RBC" name="testRequired[]" value="RBC" class="mr-2 cbc-checkbox ">
                 <label for="cbc_RBC">RBC</label>
             </div>
 
             <!-- HGB -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_HGB" name="testRequired[]" value="HGB" class="mr-2">
+                <input type="checkbox" id="cbc_HGB" name="testRequired[]" value="HGB" class="mr-2 cbc-checkbox ">
                 <label for="cbc_HGB">HGB</label>
             </div>
 
             <!-- HCT -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_HCT" name="testRequired[]" value="HCT" class="mr-2">
+                <input type="checkbox" id="cbc_HCT" name="testRequired[]" value="HCT" class="mr-2 cbc-checkbox ">
                 <label for="cbc_HCT">HCT</label>
             </div>
 
             <!-- MCV -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_MCV" name="testRequired[]" value="MCV" class="mr-2">
+                <input type="checkbox" id="cbc_MCV" name="testRequired[]" value="MCV" class="mr-2 cbc-checkbox ">
                 <label for="cbc_MCV">MCV</label>
             </div>
 
             <!-- MCH -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_MCH" name="testRequired[]" value="MCH" class="mr-2">
+                <input type="checkbox" id="cbc_MCH" name="testRequired[]" value="MCH" class="mr-2 cbc-checkbox ">
                 <label for="cbc_MCH">MCH</label>
             </div>
 
             <!-- MCHC -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_MCHC" name="testRequired[]" value="MCHC" class="mr-2">
+                <input type="checkbox" id="cbc_MCHC" name="testRequired[]" value="MCHC" class="mr-2 cbc-checkbox ">
                 <label for="cbc_MCHC">MCHC</label>
             </div>
 
             <!-- RDW-CV -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_RDW-CV" name="testRequired[]" value="RDW-CV" class="mr-2">
+                <input type="checkbox" id="cbc_RDW-CV" name="testRequired[]" value="RDW-CV" class="mr-2 cbc-checkbox ">
                 <label for="cbc_RDW-CV">RDW-CV</label>
             </div>
 
             <!-- RDW-SD -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_RDW-SD" name="testRequired[]" value="RDW-SD" class="mr-2">
+                <input type="checkbox" id="cbc_RDW-SD" name="testRequired[]" value="RDW-SD" class="mr-2 cbc-checkbox ">
                 <label for="cbc_RDW-SD">RDW-SD</label>
             </div>
 
             <!-- PLT -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_PLT" name="testRequired[]" value="PLT" class="mr-2">
+                <input type="checkbox" id="cbc_PLT" name="testRequired[]" value="PLT" class="mr-2 cbc-checkbox ">
                 <label for="cbc_PLT">PLT</label>
             </div>
 
             <!-- MPV -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_MPV" name="testRequired[]" value="MPV" class="mr-2">
+                <input type="checkbox" id="cbc_MPV" name="testRequired[]" value="MPV" class="mr-2 cbc-checkbox ">
                 <label for="cbc_MPV">MPV</label>
             </div>
 
             <!-- PDW -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="cbc_PDW" name="testRequired[]" value="PDW" class="mr-2">
+                <input type="checkbox" id="cbc_PDW" name="testRequired[]" value="PDW" class="mr-2 cbc-checkbox ">
                 <label for="cbc_PDW">PDW</label>
             </div>
 
             <!-- PCT -->
             <div class="flex items-center">
-                <input type="checkbox" id="cbc_PCT" name="testRequired[]" value="PCT" class="mr-2">
+                <input type="checkbox" id="cbc_PCT" name="testRequired[]" value="PCT" class="mr-2 cbc-checkbox ">
                 <label for="cbc_PCT">PCT</label>
             </div>
         </div>
@@ -612,44 +625,50 @@
 
 
 <!-- Lipid profile-Cholesterol level Checkbox -->
-<div class="col-3 mb-2">
+<div class="col-5 mb-2">
     <div class="flex flex-col ml-3 mr-4 mb-2">
         <label class="text-gray-700">Lipid Profile - Cholesterol</label>
 
         <div class="flex flex-wrap">
+
+           <!-- Select All Checkbox -->
+           <div class="flex items-center mb-2 mr-4">
+                <input type="checkbox" id="lipidprofile_select_all" class="mr-2 " onchange="toggleLFTCheckboxes3(this)">
+                <label for="lipidprofile_select_all">Select All</label>
+            </div>
             <!-- GLU -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lipid_GLU" name="testRequired[]" value="GLU" class="mr-2">
+                <input type="checkbox" id="lipid_GLU" name="testRequired[]" value="GLU" class="mr-2 lp-checkbox ">
                 <label for="lipid_GLU">GLU</label>
             </div>
 
             <!-- TG -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lipid_TG" name="testRequired[]" value="TG" class="mr-2">
+                <input type="checkbox" id="lipid_TG" name="testRequired[]" value="TG" class="mr-2 lp-checkbox">
                 <label for="lipid_TG">TG</label>
             </div>
 
             <!-- CHOL -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lipid_CHOL" name="testRequired[]" value="CHOL" class="mr-2">
+                <input type="checkbox" id="lipid_CHOL" name="testRequired[]" value="CHOL" class="mr-2 lp-checkbox">
                 <label for="lipid_CHOL">CHOL</label>
             </div>
 
             <!-- HDL-C -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lipid_HDL" name="testRequired[]" value="HDL-C" class="mr-2">
+                <input type="checkbox" id="lipid_HDL" name="testRequired[]" value="HDL-C" class="mr-2 lp-checkbox">
                 <label for="lipid_HDL">HDL-C</label>
             </div>
 
             <!-- LDL-C -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lipid_LDL" name="testRequired[]" value="LDL-C" class="mr-2">
+                <input type="checkbox" id="lipid_LDL" name="testRequired[]" value="LDL-C" class="mr-2 lp-checkbox">
                 <label for="lipid_LDL">LDL-C</label>
             </div>
 
             <!-- GSP -->
             <div class="flex items-center">
-                <input type="checkbox" id="lipid_GSP" name="testRequired[]" value="GSP" class="mr-2">
+                <input type="checkbox" id="lipid_GSP" name="testRequired[]" value="GSP" class="mr-2 lp-checkbox">
                 <label for="lipid_GSP">GSP</label>
             </div>
         </div>
@@ -657,74 +676,81 @@
 </div>
 
 <!-- Liver Function Test (LFTS) Checkbox -->
-<div class="col-3 mb-2">
+<div class="col-5 mb-2">
     <div class="flex flex-col ml-3 mr-4 mb-2">
         <label class="text-gray-700">Liver Function Test (LFTS)</label>
 
         <div class="flex flex-wrap">
+
+             <!-- Select All Checkbox -->
+            <div class="flex items-center mb-2 mr-4">
+                <input type="checkbox" id="lfts_select_all" class="mr-2" onchange="toggleLFTCheckboxes4(this)">
+                <label for="lfts_select_all">Select All</label>
+            </div>
+            
             <!-- TP -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_TP" name="testRequired[]" value="TP" class="mr-2">
+                <input type="checkbox" id="lfts_TP" name="testRequired[]" value="TP" class="mr-2 lfts-checkbox">
                 <label for="lfts_TP">TP</label>
             </div>
 
             <!-- ALB -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_ALB" name="testRequired[]" value="ALB" class="mr-2">
+                <input type="checkbox" id="lfts_ALB" name="testRequired[]" value="ALB" class="mr-2 lfts-checkbox">
                 <label for="lfts_ALB">ALB</label>
             </div>
 
             <!-- GLO -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_GLO" name="testRequired[]" value="GLO" class="mr-2">
+                <input type="checkbox" id="lfts_GLO" name="testRequired[]" value="GLO" class="mr-2 lfts-checkbox">
                 <label for="lfts_GLO">GLO</label>
             </div>
 
             <!-- A/G -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_A/G" name="testRequired[]" value="A/G" class="mr-2">
+                <input type="checkbox" id="lfts_A/G" name="testRequired[]" value="A/G" class="mr-2 lfts-checkbox">
                 <label for="lfts_A/G">A/G</label>
             </div>
 
             <!-- TBIL -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_TBIL" name="testRequired[]" value="TBIL" class="mr-2">
+                <input type="checkbox" id="lfts_TBIL" name="testRequired[]" value="TBIL" class="mr-2 lfts-checkbox">
                 <label for="lfts_TBIL">TBIL</label>
             </div>
 
             <!-- ALT -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_ALT" name="testRequired[]" value="ALT" class="mr-2">
+                <input type="checkbox" id="lfts_ALT" name="testRequired[]" value="ALT" class="mr-2 lfts-checkbox">
                 <label for="lfts_ALT">ALT</label>
             </div>
 
             <!-- AST -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_AST" name="testRequired[]" value="AST" class="mr-2">
+                <input type="checkbox" id="lfts_AST" name="testRequired[]" value="AST" class="mr-2 lfts-checkbox">
                 <label for="lfts_AST">AST</label>
             </div>
 
             <!-- GGT -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_GGT" name="testRequired[]" value="GGT" class="mr-2">
+                <input type="checkbox" id="lfts_GGT" name="testRequired[]" value="GGT" class="mr-2 lfts-checkbox">
                 <label for="lfts_GGT">GGT</label>
             </div>
 
             <!-- DBIL -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_DBIL" name="testRequired[]" value="DBIL" class="mr-2">
+                <input type="checkbox" id="lfts_DBIL" name="testRequired[]" value="DBIL" class="mr-2 lfts-checkbox">
                 <label for="lfts_DBIL">DBIL</label>
             </div>
 
             <!-- IBIL -->
             <div class="flex items-center mb-2 mr-4">
-                <input type="checkbox" id="lfts_IBIL" name="testRequired[]" value="IBIL" class="mr-2">
+                <input type="checkbox" id="lfts_IBIL" name="testRequired[]" value="IBIL" class="mr-2 lfts-checkbox">
                 <label for="lfts_IBIL">IBIL</label>
             </div>
 
             <!-- ALP -->
             <div class="flex items-center">
-                <input type="checkbox" id="lfts_ALP" name="testRequired[]" value="ALP" class="mr-2">
+                <input type="checkbox" id="lfts_ALP" name="testRequired[]" value="ALP" class="mr-2 lfts-checkbox">
                 <label for="lfts_ALP">ALP</label>
             </div>
         </div>
