@@ -31,7 +31,7 @@
                     @foreach($patients->whereNull('test_result') as $patient)
                             <tr >
                                 <td>{{ $patient->patient_id }}</td>
-                                <td>{{ $patient->sname }}</td>
+                                <td>{{ $patient->sname }} <span> {{ $patient->lname }}</span></td>
                                 <td>{{ $patient->test_carriedout }}</td>
                                
                                 <td>
@@ -132,7 +132,7 @@
             <tr>
                 <!-- Display patient details -->
                 <td>{{ $patient->patient_id }}</td>
-                <td>{{ $patient->sname }}</td>
+                <td>{{ $patient->sname }} <span> {{ $patient->lname }}</span></td>
                 <td>{{ $patient->test_carriedout }}</td>
                 <td>{{ $patient->test_result }}</td>
                 <td>{{ $patient->flag }}</td>
