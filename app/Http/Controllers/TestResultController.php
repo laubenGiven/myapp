@@ -96,23 +96,15 @@ class TestResultController extends Controller
      * Store a newly created resource in storage.
      */
     public function clinicianDashBoard()
-    {  
-         $result = Patient:: with('test_result')->whereHas('test_result', function ($query) {
-        $query->whereNotNull('test_result');
-    })
-    ->orderByDesc('test_date')
-    ->take(20)
-    ->get();
-        $patients = Test_Result::with('patient')
-            ->whereHas('patient', function ($query) {
-                $query->whereNotNull('test_result');
-            })
+    {
+        $results = Test_Result::query()            
             ->orderByDesc('result_date')
-            ->take(20)
+            ->take(20)           
             ->get();
     
-        return view('clinicianregister', ['patients'=>$patients,'result'=>$result]);
+        return view('clinicianregister', ['patients' => $results]);
     }
+    
     
 
     /**

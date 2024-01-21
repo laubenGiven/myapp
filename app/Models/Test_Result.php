@@ -14,7 +14,10 @@ class Test_Result extends Model
     //     return $this->belongsTo(Patient::class);
     // }
 
-
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class, 'id');
+    }
 
     protected $fillable = ['user_id','sname','lname','age','agecount','test_carriedout','image_upload','test_result','flag','range','comment','units','preview','result_date'];
 }
