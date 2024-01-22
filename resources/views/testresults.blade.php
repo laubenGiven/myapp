@@ -54,7 +54,7 @@
             <label for="units" class="text-gray-700">Units</label>
             <select name="units" class="w-150">
                 <option value="" selected></option>
-                <option value="/L">/L</option>
+                <option value="Ug/dL">Ug/dL</option>
                 <option value="mmol/L">mmol/L</option>
                 <option value="U/L">U/L</option>
                 <option value="%">%</option>
@@ -64,8 +64,10 @@
                 <option value="10^9/L">10^9/L</option>
                 <option value="g/dL">g/dL</option>
                 <option value="10^12/L">10^12/L</option>
-                <option value="pg">pg</option>
-                <option value="U/L">U/L</option>
+                <option value="pg">pg</option>              
+                <option value="nmol/L">nmol/L</option>
+                <option value="ng/mL">ng/mL</option>
+                <option value="mIu/L">mIu/L</option>
             </select>
             <input type="text" name="comment" placeholder="Comment" class="w-100">
            

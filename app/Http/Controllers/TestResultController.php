@@ -26,6 +26,16 @@ class TestResultController extends Controller
     }
     
 
+    public function clinicianindex()
+    {
+        // Retrieve records where test_carriedout is not null
+        $patients = Test_Result::whereNotNull('test_carriedout')->get();
+    
+        // Pass the fetched patients data to the view
+        return view('clinicianview', ['patients' => $patients]);
+    }
+    
+
     public function saveTestResult(Request $request, $patient_id)
 {
     $validatedData = $request->validate([
@@ -190,6 +200,61 @@ class TestResultController extends Controller
         }
     
         return redirect()->route('results')->with('error', 'Test result not found');
+    }
+
+     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit2($patient_id)
+    {
+        // Retrieve test result for the given patient_id and test_carriedout
+        $testResult = Test_Result::where('id', $patient_id)
+           
+            ->first();
+    
+        if ($testResult) {
+            return view('editpatient', ['patient' => $testResult]); // Change 'patients' to 'testResult'
+        } else {
+            return redirect()->route('patient.results')->with('error', 'Test result not found');
+        }
+    }
+    
+    
+    
+    public function update2(Request $request, $patient_id)
+    {
+        $validatedData = $request->validate([
+            'patient_id' => 'required',
+            'name' => 'required',
+            'test_carriedout' => 'required',
+            
+        ]);
+    
+        $testResult = Test_Result::where('id', $patient_id)         
+            ->first();
+    
+        if ($testResult) {
+            $testResult->fill($validatedData)->save();
+    
+            return redirect()->route('patient.results')->with('success', 'Test result updated successfully!');
+        }
+    
+        return redirect()->route('patient.results')->with('error', 'Test result not found');
+    }
+    
+    
+    public function destroy2($patient_id)
+    {
+        $testResult = Test_Result::where('id', $patient_id)           
+            ->first();
+    
+        if ($testResult) {
+            $testResult->delete();
+    
+            return redirect()->route('patient.results')->with('success', 'Test result deleted successfully!');
+        }
+    
+        return redirect()->route('patient.results')->with('error', 'Test result not found');
     }
     
 }

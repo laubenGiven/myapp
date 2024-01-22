@@ -8,12 +8,26 @@
           <img src="{{ Vite::asset('resources/images/logo.jpeg') }}" class="img-fluid rounded-circle" alt="Logo" style="width: 70px; height: 70px; border-radius: 50%;">
           </div>
           <div class="ml-2">
-            <h1>Welcome  @if(Auth::check()) <!-- Check if the user is logged in -->
-        {{ Auth::user()->name }} <!-- Display the logged-in user's name -->
-    @endif,To Patient Dashboard</h1>
-          </div>
+    <h1 class="text-xl font-bold mb-2">
+        Welcome 
+        @auth <!-- Check if the user is logged in -->
+            {{ auth()->user()->name }} <!-- Display the logged-in user's name -->
+        @endauth
+        , To Patient Dashboard
+    </h1>
 
-        </div>
+    <div class="flex space-x-4">
+        <x-nav-link href="{{ route('patientdash') }}" :active="request()->routeIs('patientdash')" class="nav-link">
+            {{ __('Dashboard') }}
+        </x-nav-link>
+        
+        <x-nav-link href="{{ route('patient.charges') }}" :active="request()->routeIs('patient.charges')" class="nav-link">
+            {{ __(' Test Charges') }}
+        </x-nav-link>
+    </div>
+</div>
+</div>
+
         <!-- Logout Button -->
         <div>
         @auth

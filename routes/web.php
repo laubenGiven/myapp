@@ -42,7 +42,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/patientlogin', function () {
+Route::get('/patientloginshow', function () {
     return view('patientlogin');
 })->name('patientloginshow');
 
@@ -55,6 +55,9 @@ Route::post('/loginpatient', [PatientController::class, 'index'])->name('patient
 
 
 Route::middleware(['auth', 'checkrole:patient'])->group(function () {
+    Route::get('/patientcharges', function () {
+        return view('patienttestcharges');
+    })->name('patient.charges');
       
     Route::get('/patientDashBoard', [TestResultController::class, 'patientDashBoard'])->name('patientdash');
     Route::get('patient/downloadprint-pdf/{patient_id}', [PdfController::class, 'generateAndDisplayPdf'])->name('downloadprint.pdf');
@@ -64,11 +67,29 @@ Route::middleware(['auth', 'checkrole:patient'])->group(function () {
 Route::get('/clinicianloginshow',[TestResultController::class,'clinicianshow'])->name('clinician');
 Route::post('/clinicianlogin', [PatientController::class,'loginClinician'])->name('loginClinician');
 
+
+
 Route::middleware(['auth', 'checkrole:clinician'])->group(function () {
-     // Routes accessible only to clinicians    
+     // Routes accessible only to clinicians  
+     Route::get('/patientlogin', function () {
+        return view('clinicianpatientregister');
+    })->name('patient.register');
+    Route::get('/testcharges', function () {
+        return view('cliniciantestcharges');
+    })->name('clinician.charges');
+
+    Route::get('/clinician-patient-results', [TestResultController::class,'clinicianindex'])->name('patient.results');
+
+     Route::post('/clinicianpatient/store', [PatientController::class, 'clinicianstore'])->name('patient.store');  
      Route::get('sendresults/generateprint-pdf/{patient_id}', [PdfController::class, 'generateAndDisplayPdf'])->name('generateprint2.pdf');
      Route::get('/clinicianDashBoard',[TestResultController::class,'clinicianDashBoard'])->name('cliniciandash');
      Route::get('/search/', [PatientController::class, 'search'])->name('search');
+
+     Route::get('/patient/{patient_id}/edit', [TestResultController::class,'edit2'])->name('patientclinician.edit');
+     Route::post('/patient/{patient_id}/update', [TestResultController::class,'update2'])->name('patientclinician.update');
+ 
+     Route::delete('/testresult/{patient_id}/delete', [TestResultController::class, 'destroy2'])->name('patientclinician.delete');
+
 
    
 });
