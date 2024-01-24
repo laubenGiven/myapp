@@ -99,7 +99,7 @@
         <th scope="col" class="thead-text">Test Result</th>
         <th scope="col" class="thead-text">Flag</th>
         <th scope="col" class="thead-text">Reference</th>
-        <th scope="col" class="thead-text"> SI Units</th>
+        <th scope="col" class="thead-text">  Units</th>
         <th scope="col" class="thead-text">Comment</th>
     </tr>
 </thead>

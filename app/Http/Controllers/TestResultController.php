@@ -18,8 +18,8 @@ class TestResultController extends Controller
      */
     public function index()
     {
-        // Retrieve records where test_carriedout is not null
-        $patients = Test_Result::whereNotNull('test_carriedout')->get();
+        // Retrieve records where test_carriedout is not null and sort in descending order
+        $patients = Test_Result::whereNotNull('test_carriedout')->orderBy('patient_id', 'desc')->get();
     
         // Pass the fetched patients data to the view
         return view('testresults', ['patients' => $patients]);
@@ -29,7 +29,7 @@ class TestResultController extends Controller
     public function clinicianindex()
     {
         // Retrieve records where test_carriedout is not null
-        $patients = Test_Result::whereNotNull('test_carriedout')->get();
+        $patients = Test_Result::whereNotNull('test_carriedout')->orderBy('patient_id', 'desc')->get();
     
         // Pass the fetched patients data to the view
         return view('clinicianview', ['patients' => $patients]);
@@ -126,7 +126,7 @@ class TestResultController extends Controller
      public function show()
         {
             // Retrieve all test results
-            $testResults = Test_Result::whereNotNull('test_result')->get();
+            $testResults = Test_Result::whereNotNull('test_result')->orderBy('patient_id', 'desc')->get();
     
             return view('send&printpatient', ['patients' => $testResults]);
         }
@@ -243,7 +243,7 @@ class TestResultController extends Controller
     }
     
     
-    public function destroy2($patient_id)
+    public function erasePatient($patient_id)
     {
         $testResult = Test_Result::where('id', $patient_id)           
             ->first();

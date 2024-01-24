@@ -91,10 +91,10 @@
                                 <td>{{ $patient->test_carriedout }}</td>
                               
                                 <td class="flex">
-                                    <a href="#" class="btn btn-primary me-2">
+                                    <a href="" class="btn btn-primary me-2">
                                         <i class="fa-solid fa-pencil "></i> Edit
                                     </a>
-                                    <form action="#" method="POST" class="delete-form ">
+                                    <form action="" method="POST" class="delete-form ">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-info bg-red-900">
@@ -144,7 +144,7 @@
                     </a>
 
                     <!-- Delete form -->
-                    <form action="#" method="POST" class="delete-form">
+                    <form action="" method="POST" class="delete-form">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-info">

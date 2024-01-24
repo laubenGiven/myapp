@@ -85,14 +85,16 @@ Route::middleware(['auth', 'checkrole:clinician'])->group(function () {
      Route::get('/clinicianDashBoard',[TestResultController::class,'clinicianDashBoard'])->name('cliniciandash');
      Route::get('/search/', [PatientController::class, 'search'])->name('search');
 
-     Route::get('/patient/{patient_id}/edit', [TestResultController::class,'edit2'])->name('patientclinician.edit');
-     Route::post('/patient/{patient_id}/update', [TestResultController::class,'update2'])->name('patientclinician.update');
+     Route::get('/patient/edit/{patient_id}', [TestResultController::class,'edit2'])->name('patientclinician.edit');
+     Route::post('/patient/update/{patient_id}/', [TestResultController::class,'update2'])->name('patientclinician.update');
  
-     Route::delete('/testresult/{patient_id}/delete', [TestResultController::class, 'destroy2'])->name('patientclinician.delete');
+     Route::delete('/testresult/delete/{patient_id}', [TestResultController::class, 'erasePatient'])->name('clinicianPatient.delete');
 
 
    
 });
+
+
 
 
 
@@ -114,8 +116,8 @@ Route::middleware([
 
     Route::get('/patient/{patient_id}/edit', [TestResultController::class,'edit'])->name('patient.edit');
     Route::post('/patient/{patient_id}/update', [TestResultController::class,'update'])->name('patient.update');
-
     Route::delete('/testresult/{patient_id}/delete', [TestResultController::class, 'destroy'])->name('patient.delete');
+   
 
 
     Route::post('/save-test-result{patient_id}/save', [TestResultController::class, 'saveTestResult'])->name('save-test-result');
