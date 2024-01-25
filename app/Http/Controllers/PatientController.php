@@ -113,7 +113,7 @@ class PatientController extends Controller
         $validatedData = $request->validate([
             'sname' => 'required',
             'lname' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'email',
             'contact' => 'required',
             'sex' => 'required',
             'age' => 'required|integer',
@@ -172,7 +172,7 @@ class PatientController extends Controller
         $validatedData = $request->validate([
             'sname' => 'required',
             'lname' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'email',
             'contact' => 'required',
             'sex' => 'required',
             'age' => 'required|integer',

@@ -125,7 +125,7 @@
             <th scope="col">flag</th>
             <th scope="col">Ref Range</th>
             <th scope="col">Units</th>
-            <th scope="col">Previewed By</th>
+            <th scope="col">Reviewed By</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>

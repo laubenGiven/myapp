@@ -76,7 +76,7 @@
                         <td class="td-text">{{ $patient->sex }}</td>
                         <td class="td-text">{{ $patient->age }} {{ $patient->agecount }}</td>
                         <td class="td-text">{{ $patient->contact }}</td>
-                        <td class="td-text">{{ $patient->test_date }}</td>
+                        <td class="td-text">{{ $patient->created_at->format('m/d/Y') }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -158,7 +158,7 @@
             <span class="d-block mb-2">Reviewed by: {{ $firstResultWithPreview->preview }}</span>
         </td>
         <td class="thead-text">
-            <span class="d-block mb-2">Date Reviewed: {{ $firstResultWithPreview->result_date }}</span>
+            <span class="d-block mb-2">Date Reviewed: {{ $firstResultWithPreview->created_at->format('m/d/Y') }}</span>
         </td>
     </tr>
 @endif

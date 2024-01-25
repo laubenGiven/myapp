@@ -142,12 +142,7 @@
         <td>Free T4</td>
         <td>30,000</td>
       </tr>
-      <tr class="table-light">
-   
-        <td>15</td>
-        <td>Free 4</td>
-        <td>30,000</td>
-      </tr>
+      
       <tr class="table-light">
    
         <td>16</td>
@@ -254,7 +249,7 @@
    
         <td>33</td>
         <td>HBsAg screening</td>
-        <td>8,000</td>
+        <td>20,000</td>
       </tr>
       <tr class="table-light">
    
@@ -271,7 +266,7 @@
       <tr class="table-light">
    
         <td>36</td>
-        <td>H.pylori=Antigen(stool)</td>
+        <td>H.pylori-Antigen(stool)</td>
         <td>30,000</td>
       </tr>
       <tr class="table-light">
@@ -338,7 +333,7 @@
    
         <td>47</td>
         <td>Sickle cell scan(Hb Electrophoresis)</td>
-        <td>5,000</td>
+        <td>50,000</td>
       </tr>
 
   </tbody>
@@ -353,18 +348,16 @@
 
     
 </div>
-
-
-
-
-
 <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
     
-    <div>
-        
+   
+
+    
 </div>
-  </div>
-        
-    </div>
+
+
+
+
+
 
 </x-guest-layout>

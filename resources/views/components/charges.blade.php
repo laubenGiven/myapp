@@ -90,12 +90,7 @@
         <td>Free T4</td>
         <td>30,000</td>
       </tr>
-      <tr class="table-light">
-   
-        <td>15</td>
-        <td>Free 4</td>
-        <td>30,000</td>
-      </tr>
+      
       <tr class="table-light">
    
         <td>16</td>
@@ -202,7 +197,7 @@
    
         <td>33</td>
         <td>HBsAg screening</td>
-        <td>8,000</td>
+        <td>20,000</td>
       </tr>
       <tr class="table-light">
    
@@ -219,7 +214,7 @@
       <tr class="table-light">
    
         <td>36</td>
-        <td>H.pylori=Antigen(stool)</td>
+        <td>H.pylori-Antigen(stool)</td>
         <td>30,000</td>
       </tr>
       <tr class="table-light">
@@ -285,8 +280,8 @@
       <tr class="table-light">
    
         <td>47</td>
-        <td>Sickle cell scan(Hb Electrophoresis</td>
-        <td>5,000</td>
+        <td>Sickle cell scan(Hb Electrophoresis)</td>
+        <td>50,000</td>
       </tr>
 
   </tbody>
